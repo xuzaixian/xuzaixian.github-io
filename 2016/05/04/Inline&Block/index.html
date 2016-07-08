@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JS," />
+  <meta name="keywords" content="HTML," />
 
 
 
@@ -80,73 +80,37 @@
 
 
 
-<meta name="description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
-
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
+<meta name="description" content="行内元素与块级元素Block Element 块级元素height,width可以设置。每个块级元素默认占据一整行。
+Inline Element 内联元素height,width不可设置。宽度随自身内容的宽度变化。默认不占据一整行。
+常用元素Block element
+address - 地址
+blockquote - 块引用
+center - 举中对齐块
+dir - 目录列表
+div - 常用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式">
-<meta property="og:url" content="http://hyuni.cn/2016/05/02/RegExp/index.html">
+<meta property="og:title" content="行内元素与块级元素汇总">
+<meta property="og:url" content="http://hyuni.cn/2016/05/04/Inline&Block/index.html">
 <meta property="og:site_name" content="Hyuni's Blog">
-<meta property="og:description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
-
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
-<meta property="og:updated_time" content="2016-06-16T05:58:51.538Z">
+<meta property="og:description" content="行内元素与块级元素Block Element 块级元素height,width可以设置。每个块级元素默认占据一整行。
+Inline Element 内联元素height,width不可设置。宽度随自身内容的宽度变化。默认不占据一整行。
+常用元素Block element
+address - 地址
+blockquote - 块引用
+center - 举中对齐块
+dir - 目录列表
+div - 常用">
+<meta property="og:updated_time" content="2016-05-27T02:40:08.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
-
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
+<meta name="twitter:title" content="行内元素与块级元素汇总">
+<meta name="twitter:description" content="行内元素与块级元素Block Element 块级元素height,width可以设置。每个块级元素默认占据一整行。
+Inline Element 内联元素height,width不可设置。宽度随自身内容的宽度变化。默认不占据一整行。
+常用元素Block element
+address - 地址
+blockquote - 块引用
+center - 举中对齐块
+dir - 目录列表
+div - 常用">
 
 
 
@@ -164,7 +128,7 @@ $代表字符串的结尾
   };
 </script>
 
-  <title> 正则表达式 | Hyuni's Blog </title>
+  <title> 行内元素与块级元素汇总 | Hyuni's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +268,7 @@ $代表字符串的结尾
             
             
               
-                正则表达式
+                行内元素与块级元素汇总
               
             
           </h1>
@@ -316,8 +280,8 @@ $代表字符串的结尾
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-02T13:16:06+08:00" content="2016-05-02">
-              2016-05-02
+            <time itemprop="dateCreated" datetime="2016-05-04T11:00:00+08:00" content="2016-05-04">
+              2016-05-04
             </time>
           </span>
 
@@ -344,45 +308,59 @@ $代表字符串的结尾
       
 
       
-        <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="正则表达式基本语法"><a href="#正则表达式基本语法" class="headerlink" title="正则表达式基本语法"></a>正则表达式基本语法</h2><ul>
-<li>^代表字符串的开头</li>
-<li>$代表字符串的结尾</li>
+        <h1 id="行内元素与块级元素"><a href="#行内元素与块级元素" class="headerlink" title="行内元素与块级元素"></a>行内元素与块级元素</h1><h2 id="Block-Element-块级元素"><a href="#Block-Element-块级元素" class="headerlink" title="Block Element 块级元素"></a>Block Element 块级元素</h2><p>height,width可以设置。每个块级元素默认占据一整行。</p>
+<h2 id="Inline-Element-内联元素"><a href="#Inline-Element-内联元素" class="headerlink" title="Inline Element 内联元素"></a>Inline Element 内联元素</h2><p>height,width不可设置。宽度随自身内容的宽度变化。默认不占据一整行。</p>
+<h2 id="常用元素"><a href="#常用元素" class="headerlink" title="常用元素"></a>常用元素</h2><h3 id="Block-element"><a href="#Block-element" class="headerlink" title="Block element"></a>Block element</h3><ul>
+<li>address - 地址</li>
+<li>blockquote - 块引用</li>
+<li>center - 举中对齐块</li>
+<li>dir - 目录列表</li>
+<li>div - 常用块级容易，也是css layout的主要标签</li>
+<li>dl - 定义列表</li>
+<li>form - 交互表单</li>
+<li>h1 - 大标题</li>
+<li>h2 - 副标题</li>
+<li>h3 - 3级标题</li>
+<li>h4 - 4级标题</li>
+<li>h5 - 5级标题</li>
+<li>h6 - 6级标题</li>
+<li>hr - 水平分隔线</li>
+<li>menu - 菜单列表</li>
+<li>noframes - frames可选内容，对于不支持frame的浏览器显示此区块内容</li>
+<li>noscript - 可选脚本内容,对于不支持script的浏览器显示此内容</li>
+<li>ol - 排序表单</li>
+<li>p - 段落</li>
+<li>pre - 格式化文本</li>
+<li>table - 表格</li>
+<li>ul - 非排序列表</li>
 </ul>
-<ul>
-<li>\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi</li>
-<li>\d匹配一位数字。 同[0-9]</li>
-<li>\w匹配任意字母或者数字或者下划线或者汉字 </li>
-<li>\s匹配任意的空白符</li>
+<h3 id="Inline-element"><a href="#Inline-element" class="headerlink" title="Inline element"></a>Inline element</h3><ul>
+<li>a - 锚点</li>
+<li>abbr - 缩写</li>
+<li>acronym - 首字</li>
+<li>b - 粗体(不推荐)</li>
+<li>big - 大字体</li>
+<li>br - 换行</li>
+<li>dfn - 定义字段</li>
+<li>em - 强调</li>
+<li>font - 字体设定(不推荐)</li>
+<li>i - 斜体</li>
+<li>img - 图片</li>
+<li>input - 输入框</li>
+<li>label - 表格标签</li>
+<li>q - 短引用</li>
+<li>s - 中划线(不推荐)</li>
+<li>samp - 定义范例计算机代码</li>
+<li>select - 项目选择</li>
+<li>small - 小字体文本</li>
+<li>span - 常用内联容器，定义文本内区块</li>
+<li>strike - 中划线</li>
+<li>strong - 粗体强调</li>
+<li>sub - 下标</li>
+<li>sup - 上标</li>
+<li>textarea - 多行文本输入框</li>
+<li>u - 下划线</li>
 </ul>
-<p><code>以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符</code></p>
-<ul>
-<li>\B</li>
-<li>\D</li>
-<li>\W</li>
-<li>\S</li>
-</ul>
-<hr>
-<ul>
-<li>.   匹配除了换行符以外的任何字符。</li>
-<li>*表示数量  *前面的内容可以连续重复匹配任意次数包括0次。</li>
-<li>+表示数量 和*不同的是 必须匹配1次或者1次以上</li>
-<li>? 匹配0次或者1次</li>
-</ul>
-<p><code>如果想匹配 . * + 这样的符号就必须使用转义符 \</code></p>
-<ul>
-<li>{数字}连续匹配n次。 \d{4}-\d{8}匹配电话号。四位区号-八位电话号。{m，n}匹配不少次m次不多于n次。{m,}重复匹配n或者更多次</li>
-</ul>
-<hr>
-<ul>
-<li>[ ]表示匹配集合中的某一个字符</li>
-<li>( )表示分组，相当于子表达式。</li>
-<li>[^x] 匹配除了x以外的任意字符</li>
-<li>(^abcd)匹配除了abcd意外的任意字符</li>
-</ul>
-<p><code>练习：解读 ((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?) 匹配IP地址的正则表达式。</code></p>
-<p><code>&lt;a[^&gt;]+&gt;匹配用尖括号括起来的以a开头的字符串。</code></p>
-<hr>
-<h2 id="JS中的正则表达式"><a href="#JS中的正则表达式" class="headerlink" title="JS中的正则表达式"></a>JS中的正则表达式</h2><p>引用：<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">http://deerchao.net/tutorials/regex/regex.htm</a></p>
 
       
     </div>
@@ -403,7 +381,7 @@ $代表字符串的结尾
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag">#JS</a>
+            <a href="/tags/HTML/" rel="tag">#HTML</a>
           
         </div>
       
@@ -412,12 +390,16 @@ $代表字符串的结尾
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/04/extend/" rel="next" title="JS中的继承">
+                <i class="fa fa-chevron-left"></i> JS中的继承
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/04/Object/" rel="prev" title="JS中的对象">
-                JS中的对象 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/20/Ajax/" rel="prev" title="AJAX">
+                AJAX <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,7 +514,7 @@ $代表字符串的结尾
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式基本语法"><span class="nav-number">1.1.</span> <span class="nav-text">正则表达式基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中的正则表达式"><span class="nav-number">1.2.</span> <span class="nav-text">JS中的正则表达式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#行内元素与块级元素"><span class="nav-number">1.</span> <span class="nav-text">行内元素与块级元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Block-Element-块级元素"><span class="nav-number">1.1.</span> <span class="nav-text">Block Element 块级元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inline-Element-内联元素"><span class="nav-number">1.2.</span> <span class="nav-text">Inline Element 内联元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用元素"><span class="nav-number">1.3.</span> <span class="nav-text">常用元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-element"><span class="nav-number">1.3.1.</span> <span class="nav-text">Block element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inline-element"><span class="nav-number">1.3.2.</span> <span class="nav-text">Inline element</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

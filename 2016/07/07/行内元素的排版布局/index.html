@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JS," />
+  <meta name="keywords" content="HTML,CSS," />
 
 
 
@@ -80,73 +80,30 @@
 
 
 
-<meta name="description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
+<meta name="description" content="行内元素布局笔记
+ 此处所讨论的行内元素包括inline-block 
 
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
+行内元素是不能设定宽高，(inline-block可以).他的高一般由line-hight决定。
+行内元素框内有文字和没文字的区别，高度伸展的方向是不一样的。当有文字的时候，高度是向下扩展的，没文字的时候是向上扩展的。这条规则是inline元素布局特殊的一点，经常刚开始布局好了之后，在元素之内添加文字导致元素上下乱跳的罪魁祸">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式">
-<meta property="og:url" content="http://hyuni.cn/2016/05/02/RegExp/index.html">
+<meta property="og:title" content="行内元素的排版布局">
+<meta property="og:url" content="http://hyuni.cn/2016/07/07/行内元素的排版布局/index.html">
 <meta property="og:site_name" content="Hyuni's Blog">
-<meta property="og:description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
+<meta property="og:description" content="行内元素布局笔记
+ 此处所讨论的行内元素包括inline-block 
 
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
-<meta property="og:updated_time" content="2016-06-16T05:58:51.538Z">
+行内元素是不能设定宽高，(inline-block可以).他的高一般由line-hight决定。
+行内元素框内有文字和没文字的区别，高度伸展的方向是不一样的。当有文字的时候，高度是向下扩展的，没文字的时候是向上扩展的。这条规则是inline元素布局特殊的一点，经常刚开始布局好了之后，在元素之内添加文字导致元素上下乱跳的罪魁祸">
+<meta property="og:image" content="http://hyuni.cn/images/7037fde4763d31123ee7fb7ee4d44656.png">
+<meta property="og:updated_time" content="2016-07-07T04:27:30.778Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
+<meta name="twitter:title" content="行内元素的排版布局">
+<meta name="twitter:description" content="行内元素布局笔记
+ 此处所讨论的行内元素包括inline-block 
 
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
+行内元素是不能设定宽高，(inline-block可以).他的高一般由line-hight决定。
+行内元素框内有文字和没文字的区别，高度伸展的方向是不一样的。当有文字的时候，高度是向下扩展的，没文字的时候是向上扩展的。这条规则是inline元素布局特殊的一点，经常刚开始布局好了之后，在元素之内添加文字导致元素上下乱跳的罪魁祸">
+<meta name="twitter:image" content="http://hyuni.cn/images/7037fde4763d31123ee7fb7ee4d44656.png">
 
 
 
@@ -164,7 +121,7 @@ $代表字符串的结尾
   };
 </script>
 
-  <title> 正则表达式 | Hyuni's Blog </title>
+  <title> 行内元素的排版布局 | Hyuni's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +261,7 @@ $代表字符串的结尾
             
             
               
-                正则表达式
+                行内元素的排版布局
               
             
           </h1>
@@ -316,11 +273,42 @@ $代表字符串的结尾
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-02T13:16:06+08:00" content="2016-05-02">
-              2016-05-02
+            <time itemprop="dateCreated" datetime="2016-07-07T11:55:00+08:00" content="2016-07-07">
+              2016-07-07
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/HTML/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -344,45 +332,17 @@ $代表字符串的结尾
       
 
       
-        <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="正则表达式基本语法"><a href="#正则表达式基本语法" class="headerlink" title="正则表达式基本语法"></a>正则表达式基本语法</h2><ul>
-<li>^代表字符串的开头</li>
-<li>$代表字符串的结尾</li>
-</ul>
+        <h1 id="行内元素布局笔记"><a href="#行内元素布局笔记" class="headerlink" title="行内元素布局笔记"></a>行内元素布局笔记</h1><hr>
+<p><strong> 此处所讨论的行内元素包括inline-block </strong></p>
 <ul>
-<li>\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi</li>
-<li>\d匹配一位数字。 同[0-9]</li>
-<li>\w匹配任意字母或者数字或者下划线或者汉字 </li>
-<li>\s匹配任意的空白符</li>
+<li>行内元素是不能设定宽高，(inline-block可以).他的高一般由line-hight决定。</li>
+<li>行内元素框内有文字和没文字的区别，高度伸展的方向是不一样的。当有文字的时候，高度是向下扩展的，没文字的时候是向上扩展的。<br>这条规则是inline元素布局特殊的一点，经常刚开始布局好了之后，在元素之内添加文字导致元素上下乱跳的罪魁祸首。</li>
+<li>行内元素垂直对齐的时候常用CSS属性 vertical-align  </li>
+<li>默认情况下，是子元素的最后一行文字或者是最后一个inline-block与父元素的基线对齐</li>
+<li>基线参考图  </li>
 </ul>
-<p><code>以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符</code></p>
-<ul>
-<li>\B</li>
-<li>\D</li>
-<li>\W</li>
-<li>\S</li>
-</ul>
-<hr>
-<ul>
-<li>.   匹配除了换行符以外的任何字符。</li>
-<li>*表示数量  *前面的内容可以连续重复匹配任意次数包括0次。</li>
-<li>+表示数量 和*不同的是 必须匹配1次或者1次以上</li>
-<li>? 匹配0次或者1次</li>
-</ul>
-<p><code>如果想匹配 . * + 这样的符号就必须使用转义符 \</code></p>
-<ul>
-<li>{数字}连续匹配n次。 \d{4}-\d{8}匹配电话号。四位区号-八位电话号。{m，n}匹配不少次m次不多于n次。{m,}重复匹配n或者更多次</li>
-</ul>
-<hr>
-<ul>
-<li>[ ]表示匹配集合中的某一个字符</li>
-<li>( )表示分组，相当于子表达式。</li>
-<li>[^x] 匹配除了x以外的任意字符</li>
-<li>(^abcd)匹配除了abcd意外的任意字符</li>
-</ul>
-<p><code>练习：解读 ((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?) 匹配IP地址的正则表达式。</code></p>
-<p><code>&lt;a[^&gt;]+&gt;匹配用尖括号括起来的以a开头的字符串。</code></p>
-<hr>
-<h2 id="JS中的正则表达式"><a href="#JS中的正则表达式" class="headerlink" title="JS中的正则表达式"></a>JS中的正则表达式</h2><p>引用：<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">http://deerchao.net/tutorials/regex/regex.htm</a></p>
+<p><img src="/images/7037fde4763d31123ee7fb7ee4d44656.png" alt="Alt text">  </p>
+<h2 id="vertical-align"><a href="#vertical-align" class="headerlink" title="vertical-align"></a>vertical-align</h2><p><strong> 下列资料来自MDN(<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align</a>) </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">取值 (行内(inline)元素)</span><br><span class="line"></span><br><span class="line">多数值是相对于父元素：</span><br><span class="line"></span><br><span class="line">baseline</span><br><span class="line">元素基线与父元素的基线对齐。一些 可替换元素，比如 &lt;textarea&gt; ， HTML标准没有说明它的基线，这意味着使用这个关键字，各浏览器表现可能不一样。</span><br><span class="line">sub</span><br><span class="line">元素基线与父元素的下标基线对齐。</span><br><span class="line">super</span><br><span class="line">元素基线与父元素的上标基线对齐。</span><br><span class="line">text-top</span><br><span class="line">元素顶端与父元素字体的顶端对齐。</span><br><span class="line">text-bottom</span><br><span class="line">元素底端与父元素字体的底端对齐。</span><br><span class="line">middle</span><br><span class="line">元素中线与父元素的小写x中线对齐。</span><br><span class="line">&lt;length&gt;</span><br><span class="line">元素基线超过父元素的基线指定高度。可以取负值。</span><br><span class="line">&lt;percentage&gt;</span><br><span class="line">同 &lt;length&gt; , 百分比相对于 line-height 。</span><br><span class="line">下面两个属性不像上面的属性相对于父元素，而是相对于整行：</span><br><span class="line"></span><br><span class="line">top</span><br><span class="line"> 元素及其后代的顶端与整行的顶端对齐。</span><br><span class="line">bottom</span><br><span class="line">元素及其后代的底端与整行的底端对齐。</span><br><span class="line">如果元素没有基线baseline，则以它的外边距的下边缘为基线。</span><br><span class="line"></span><br><span class="line">取值 (table-cell元素)</span><br><span class="line"></span><br><span class="line">baseline (and sub, super, text-top, text-bottom, &lt;length&gt;, and &lt;percentage&gt;)</span><br><span class="line">与同行单元格的基线对齐。</span><br><span class="line">top</span><br><span class="line">单元格的内边距的上边缘与行的顶端对齐。</span><br><span class="line">middle</span><br><span class="line">单元格垂直居中。</span><br><span class="line">bottom</span><br><span class="line">单元格的内边距的下边缘与行的底端对齐。</span><br><span class="line">可以取负值。</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -403,7 +363,9 @@ $代表字符串的结尾
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag">#JS</a>
+            <a href="/tags/HTML/" rel="tag">#HTML</a>
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
           
         </div>
       
@@ -412,13 +374,13 @@ $代表字符串的结尾
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/06/16/Mongodb新建用户方法/" rel="next" title="Mongodb新建用户方法">
+                <i class="fa fa-chevron-left"></i> Mongodb新建用户方法
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/04/Object/" rel="prev" title="JS中的对象">
-                JS中的对象 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -532,7 +494,7 @@ $代表字符串的结尾
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式基本语法"><span class="nav-number">1.1.</span> <span class="nav-text">正则表达式基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中的正则表达式"><span class="nav-number">1.2.</span> <span class="nav-text">JS中的正则表达式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#行内元素布局笔记"><span class="nav-number">1.</span> <span class="nav-text">行内元素布局笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vertical-align"><span class="nav-number">1.1.</span> <span class="nav-text">vertical-align</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

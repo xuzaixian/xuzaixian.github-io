@@ -80,73 +80,22 @@
 
 
 
-<meta name="description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
-
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
+<meta name="description" content="AjaxAjax - Asynchronous JavaScript and XML 异步JavaScript与XMLAjax通过JS的XMLHttpRequest对象实现
+属性
+reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建XHR对象OPENED 1 已调用OPEN方法HEADERS_RECEIVED 2 已收到服务器响应头LOADING 3 已经收到服务器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式">
-<meta property="og:url" content="http://hyuni.cn/2016/05/02/RegExp/index.html">
+<meta property="og:title" content="AJAX">
+<meta property="og:url" content="http://hyuni.cn/2016/05/20/Ajax/index.html">
 <meta property="og:site_name" content="Hyuni's Blog">
-<meta property="og:description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
-
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
-<meta property="og:updated_time" content="2016-06-16T05:58:51.538Z">
+<meta property="og:description" content="AjaxAjax - Asynchronous JavaScript and XML 异步JavaScript与XMLAjax通过JS的XMLHttpRequest对象实现
+属性
+reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建XHR对象OPENED 1 已调用OPEN方法HEADERS_RECEIVED 2 已收到服务器响应头LOADING 3 已经收到服务器">
+<meta property="og:updated_time" content="2016-06-23T11:20:47.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="正则表达式正则表达式基本语法
-^代表字符串的开头
-$代表字符串的结尾
-
-
-\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi
-\d匹配一位数字。 同[0-9]
-\w匹配任意字母或者数字或者下划线或者汉字 
-\s匹配任意的空白符
-
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
+<meta name="twitter:title" content="AJAX">
+<meta name="twitter:description" content="AjaxAjax - Asynchronous JavaScript and XML 异步JavaScript与XMLAjax通过JS的XMLHttpRequest对象实现
+属性
+reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建XHR对象OPENED 1 已调用OPEN方法HEADERS_RECEIVED 2 已收到服务器响应头LOADING 3 已经收到服务器">
 
 
 
@@ -164,7 +113,7 @@ $代表字符串的结尾
   };
 </script>
 
-  <title> 正则表达式 | Hyuni's Blog </title>
+  <title> AJAX | Hyuni's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +253,7 @@ $代表字符串的结尾
             
             
               
-                正则表达式
+                AJAX
               
             
           </h1>
@@ -316,11 +265,30 @@ $代表字符串的结尾
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-02T13:16:06+08:00" content="2016-05-02">
-              2016-05-02
+            <time itemprop="dateCreated" datetime="2016-05-20T19:00:00+08:00" content="2016-05-20">
+              2016-05-20
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -344,45 +312,35 @@ $代表字符串的结尾
       
 
       
-        <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="正则表达式基本语法"><a href="#正则表达式基本语法" class="headerlink" title="正则表达式基本语法"></a>正则表达式基本语法</h2><ul>
-<li>^代表字符串的开头</li>
-<li>$代表字符串的结尾</li>
+        <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><p>Ajax - Asynchronous JavaScript and XML 异步JavaScript与XML<br>Ajax通过JS的XMLHttpRequest对象实现</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
+<li>reaadyState<br>表示XHR对象的状态：<br>值、数值、说明<br>UNSENT 0 成功创建XHR对象<br>OPENED 1 已调用OPEN方法<br>HEADERS_RECEIVED 2 已收到服务器响应头<br>LOADING 3 已经收到服务器响应<br>DONE 4 响应完成或失败</li>
+<li>onreadystatechange<br>状态改变的事件触发器。readyState属性变化时调用的该属性上的js函数。</li>
+<li>responseText<br>服务器响应的文本</li>
+<li>responseXML<br>服务器响应的XML内容对应的DOM</li>
+<li>Status<br>服务器返回的http状态码。状态码详情见HTTP协议，</li>
+<li>statusText<br>服务器返回状态的文本信息。</li>
 </ul>
-<ul>
-<li>\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi</li>
-<li>\d匹配一位数字。 同[0-9]</li>
-<li>\w匹配任意字母或者数字或者下划线或者汉字 </li>
-<li>\s匹配任意的空白符</li>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
+<li>Open(string method,string url,boolean asynch[,String username,string password]) </li>
+<li>Send(content) content可以是DOM对象，输入流，字符串。如果是异步传输，该方法会被立刻返回。</li>
+<li>SetRequestHeader(String header,String Value) 设置HTTP请求中的指定头部header的值为value.<br>此方法需在open方法以后调用，一般在post方式中使用。</li>
+<li>getAllResponseHeaders() 返回包含Http的所有响应头信息，其中相应头包括Content-length,date,uri等内容。<br>返回值是一个字符串，包含所有头信息，其中每个键名和键值用冒号分开，每一组键之间用CR和LF（回车加换行符）来分隔</li>
+<li>getResponseHeader(String header) 返回HTTP响应头中指定的键名header对应的值</li>
+<li>Abort() 停止当前http请求。对应的XMLHttpRequest对象会复位到未初始化的状态。</li>
 </ul>
-<p><code>以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符</code></p>
-<ul>
-<li>\B</li>
-<li>\D</li>
-<li>\W</li>
-<li>\S</li>
+<h2 id="XHR简单用法"><a href="#XHR简单用法" class="headerlink" title="XHR简单用法"></a>XHR简单用法</h2><p>1.open()<br>2.send() //如果不传数据则必须输入null.在调用send()之后。请求被发送到服务器。如果是异步的则立刻返回，否则等待服务器响应。在收到响应之后，响应的数据自动填充XHR的属性。</p>
+<pre><code>* responseText 响应主题被返回的文本。
+* responseXML 如果响应的内容类型是text/xml或者application/xml，这个属性中将保存喊着响应数据的XML DOM.
+* status 相应的HTTP状态
+* statusText HTTP状态的说明   
+</code></pre><p>3.收到响应后，第一步检查status属性。在进行下一步操作。</p>
+<p>但是如果操作是异步的，则要通过监控readyState属性来操作。每当readyState属性变化时会触发onreadystatechange函数。我们一般只对readyState==4感兴趣。  </p>
+<h2 id="使用FormData对象传送文件与表单数据"><a href="#使用FormData对象传送文件与表单数据" class="headerlink" title="使用FormData对象传送文件与表单数据"></a>使用FormData对象传送文件与表单数据</h2><h2 id="浏览器差异"><a href="#浏览器差异" class="headerlink" title="浏览器差异"></a>浏览器差异</h2><h2 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h2><p>对于IE连XHR对象都不一样。另看文章。</p>
+<h2 id="opera"><a href="#opera" class="headerlink" title="opera"></a>opera</h2><ul>
+<li>opera不对readystatechange的触发函数传入一个event对象，所以XHR对象的作用域应该包含readystatechange的作用域。</li>
+<li>opera没有定义就绪状态常量，也就是不能使用UNSENT这样的常量作为readystate的值，而必须使用数字。</li>
 </ul>
-<hr>
-<ul>
-<li>.   匹配除了换行符以外的任何字符。</li>
-<li>*表示数量  *前面的内容可以连续重复匹配任意次数包括0次。</li>
-<li>+表示数量 和*不同的是 必须匹配1次或者1次以上</li>
-<li>? 匹配0次或者1次</li>
-</ul>
-<p><code>如果想匹配 . * + 这样的符号就必须使用转义符 \</code></p>
-<ul>
-<li>{数字}连续匹配n次。 \d{4}-\d{8}匹配电话号。四位区号-八位电话号。{m，n}匹配不少次m次不多于n次。{m,}重复匹配n或者更多次</li>
-</ul>
-<hr>
-<ul>
-<li>[ ]表示匹配集合中的某一个字符</li>
-<li>( )表示分组，相当于子表达式。</li>
-<li>[^x] 匹配除了x以外的任意字符</li>
-<li>(^abcd)匹配除了abcd意外的任意字符</li>
-</ul>
-<p><code>练习：解读 ((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?) 匹配IP地址的正则表达式。</code></p>
-<p><code>&lt;a[^&gt;]+&gt;匹配用尖括号括起来的以a开头的字符串。</code></p>
-<hr>
-<h2 id="JS中的正则表达式"><a href="#JS中的正则表达式" class="headerlink" title="JS中的正则表达式"></a>JS中的正则表达式</h2><p>引用：<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">http://deerchao.net/tutorials/regex/regex.htm</a></p>
 
       
     </div>
@@ -412,12 +370,16 @@ $代表字符串的结尾
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/04/Inline&Block/" rel="next" title="行内元素与块级元素汇总">
+                <i class="fa fa-chevron-left"></i> 行内元素与块级元素汇总
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/04/Object/" rel="prev" title="JS中的对象">
-                JS中的对象 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/27/doctype/" rel="prev" title="DOCTYPE">
+                DOCTYPE <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,7 +494,7 @@ $代表字符串的结尾
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式基本语法"><span class="nav-number">1.1.</span> <span class="nav-text">正则表达式基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中的正则表达式"><span class="nav-number">1.2.</span> <span class="nav-text">JS中的正则表达式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax"><span class="nav-number">1.</span> <span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">1.2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XHR简单用法"><span class="nav-number">1.3.</span> <span class="nav-text">XHR简单用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用FormData对象传送文件与表单数据"><span class="nav-number">1.4.</span> <span class="nav-text">使用FormData对象传送文件与表单数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器差异"><span class="nav-number">1.5.</span> <span class="nav-text">浏览器差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IE"><span class="nav-number">1.6.</span> <span class="nav-text">IE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#opera"><span class="nav-number">1.7.</span> <span class="nav-text">opera</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

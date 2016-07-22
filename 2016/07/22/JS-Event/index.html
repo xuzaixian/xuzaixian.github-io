@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JS," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,22 +80,19 @@
 
 
 
-<meta name="description" content="AjaxAjax - Asynchronous JavaScript and XML 异步JavaScript与XMLAjax通过JS的XMLHttpRequest对象实现
-属性
-reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建XHR对象OPENED 1 已调用OPEN方法HEADERS_RECEIVED 2 已收到服务器响应头LOADING 3 已经收到服务器">
+<meta name="description" content="监听事件的方法直接对属性赋值时间处理函数1element.onclick = function()&amp;#123;&amp;#125;
+ 这种方式适用于DOM0级的事件监听，事件方法有’on’字样。这种方法不能添加多个事件处理器。 123456element.onclick = function()&amp;#123;//function 1&amp;#125;element.onclick = function()&amp;#12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AJAX">
-<meta property="og:url" content="http://hyuni.cn/2016/05/20/Ajax/index.html">
+<meta property="og:title" content="JS中的事件">
+<meta property="og:url" content="http://hyuni.cn/2016/07/22/JS-Event/index.html">
 <meta property="og:site_name" content="Hyuni's Blog">
-<meta property="og:description" content="AjaxAjax - Asynchronous JavaScript and XML 异步JavaScript与XMLAjax通过JS的XMLHttpRequest对象实现
-属性
-reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建XHR对象OPENED 1 已调用OPEN方法HEADERS_RECEIVED 2 已收到服务器响应头LOADING 3 已经收到服务器">
-<meta property="og:updated_time" content="2016-07-15T04:58:08.080Z">
+<meta property="og:description" content="监听事件的方法直接对属性赋值时间处理函数1element.onclick = function()&amp;#123;&amp;#125;
+ 这种方式适用于DOM0级的事件监听，事件方法有’on’字样。这种方法不能添加多个事件处理器。 123456element.onclick = function()&amp;#123;//function 1&amp;#125;element.onclick = function()&amp;#12">
+<meta property="og:updated_time" content="2016-07-22T13:28:24.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AJAX">
-<meta name="twitter:description" content="AjaxAjax - Asynchronous JavaScript and XML 异步JavaScript与XMLAjax通过JS的XMLHttpRequest对象实现
-属性
-reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建XHR对象OPENED 1 已调用OPEN方法HEADERS_RECEIVED 2 已收到服务器响应头LOADING 3 已经收到服务器">
+<meta name="twitter:title" content="JS中的事件">
+<meta name="twitter:description" content="监听事件的方法直接对属性赋值时间处理函数1element.onclick = function()&amp;#123;&amp;#125;
+ 这种方式适用于DOM0级的事件监听，事件方法有’on’字样。这种方法不能添加多个事件处理器。 123456element.onclick = function()&amp;#123;//function 1&amp;#125;element.onclick = function()&amp;#12">
 
 
 
@@ -113,7 +110,7 @@ reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建
   };
 </script>
 
-  <title> AJAX | Hyuni's Blog </title>
+  <title> JS中的事件 | Hyuni's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -253,7 +250,7 @@ reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建
             
             
               
-                AJAX
+                JS中的事件
               
             
           </h1>
@@ -265,30 +262,11 @@ reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T19:00:00+08:00" content="2016-05-20">
-              2016-05-20
+            <time itemprop="dateCreated" datetime="2016-07-22T20:11:52+08:00" content="2016-07-22">
+              2016-07-22
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -312,36 +290,20 @@ reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建
       
 
       
-        <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><p>Ajax - Asynchronous JavaScript and XML 异步JavaScript与XML<br>Ajax通过JS的XMLHttpRequest对象实现</p>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
-<li>reaadyState<br>表示XHR对象的状态：<br>值、数值、说明<br>UNSENT 0 成功创建XHR对象<br>OPENED 1 已调用OPEN方法<br>HEADERS_RECEIVED 2 已收到服务器响应头<br>LOADING 3 已经收到服务器响应<br>DONE 4 响应完成或失败</li>
-<li>onreadystatechange<br>状态改变的事件触发器。readyState属性变化时调用的该属性上的js函数。</li>
-<li>responseText<br>服务器响应的文本</li>
-<li>responseXML<br>服务器响应的XML内容对应的DOM</li>
-<li>Status<br>服务器返回的http状态码。状态码详情见HTTP协议，</li>
-<li>statusText<br>服务器返回状态的文本信息。</li>
-</ul>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
-<li>Open(string method,string url,boolean asynch[,String username,string password]) </li>
-<li>Send(content) content可以是DOM对象，输入流，字符串。如果是异步传输，该方法会被立刻返回。</li>
-<li>SetRequestHeader(String header,String Value) 设置HTTP请求中的指定头部header的值为value.<br>此方法需在open方法以后调用，一般在post方式中使用。</li>
-<li>getAllResponseHeaders() 返回包含Http的所有响应头信息，其中相应头包括Content-length,date,uri等内容。<br>返回值是一个字符串，包含所有头信息，其中每个键名和键值用冒号分开，每一组键之间用CR和LF（回车加换行符）来分隔</li>
-<li>getResponseHeader(String header) 返回HTTP响应头中指定的键名header对应的值</li>
-<li>Abort() 停止当前http请求。对应的XMLHttpRequest对象会复位到未初始化的状态。</li>
-</ul>
-<h2 id="XHR简单用法"><a href="#XHR简单用法" class="headerlink" title="XHR简单用法"></a>XHR简单用法</h2><p>1.open()<br>2.send() //如果不传数据则必须输入null.在调用send()之后。请求被发送到服务器。如果是异步的则立刻返回，否则等待服务器响应。在收到响应之后，响应的数据自动填充XHR的属性。</p>
-<pre><code>* responseText 响应主题被返回的文本。
-* responseXML 如果响应的内容类型是text/xml或者application/xml，这个属性中将保存喊着响应数据的XML DOM.
-* status 相应的HTTP状态
-* statusText HTTP状态的说明   
-</code></pre><p>3.收到响应后，第一步检查status属性。在进行下一步操作。</p>
-<p>但是如果操作是异步的，则要通过监控readyState属性来操作。每当readyState属性变化时会触发onreadystatechange函数。我们一般只对readyState==4感兴趣。  </p>
-<h2 id="浏览器差异"><a href="#浏览器差异" class="headerlink" title="浏览器差异"></a>浏览器差异</h2><h2 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h2><p>对于IE连XHR对象都不一样。为了兼容IE6需要使用下面的方法创建对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//为了兼容IE6</span></span><br><span class="line">    xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>其他的操作则与W3C标准一样，只是创建对象的时候有所不同。</p>
-<h2 id="opera"><a href="#opera" class="headerlink" title="opera"></a>opera</h2><ul>
-<li>opera不对readystatechange的触发函数传入一个event对象，所以XHR对象的作用域应该包含readystatechange的作用域。</li>
-<li>opera没有定义就绪状态常量，也就是不能使用UNSENT这样的常量作为readystate的值，而必须使用数字。</li>
-</ul>
+        <h1 id="监听事件的方法"><a href="#监听事件的方法" class="headerlink" title="监听事件的方法"></a>监听事件的方法</h1><h2 id="直接对属性赋值时间处理函数"><a href="#直接对属性赋值时间处理函数" class="headerlink" title="直接对属性赋值时间处理函数"></a>直接对属性赋值时间处理函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.onclick = function()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p> 这种方式适用于DOM0级的事件监听，事件方法有’on’字样。这种方法不能添加多个事件处理器。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">element.onclick = function()&#123;</span><br><span class="line">//function 1</span><br><span class="line">&#125;</span><br><span class="line">element.onclick = function()&#123;</span><br><span class="line">//function 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> 这种情况时，function1会被function2覆盖掉。</p>
+<h2 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener"></a>addEventListener</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(&apos;event&apos;,function()&#123;</span><br><span class="line">//function1</span><br><span class="line">&#125;);</span><br><span class="line">element.addEventListener(&apos;event&apos;,function()&#123;</span><br><span class="line">//function2</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p> 这种方法则可以有多个处理函数。执行顺序为先执行前面定义的，也就是function1,然后再运行function2.<br> addEventListener使用的是DOM2时间，也就是没有’on’字样。<br> 并且使用这种方法还可以选择是在捕获阶段触发还是在冒泡阶段触发。<br> <strong>它对任何DOM元素都是有效的，而不仅仅只对HTML元素有效。</strong></p>
+<h3 id="事件处理函数使用匿名函数与有引用的函数区别"><a href="#事件处理函数使用匿名函数与有引用的函数区别" class="headerlink" title="事件处理函数使用匿名函数与有引用的函数区别"></a>事件处理函数使用匿名函数与有引用的函数区别</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(&apos;event&apos;,function()&#123;</span><br><span class="line">//function1</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p> 像上述代码中直接使用匿名函数作为事件处理函数可以使用element.removeEventListener来取消事件的监听<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myElement.removeEventListener(&quot;click&quot;, processEvent, false);</span><br></pre></td></tr></table></figure></p>
+<p> 而使用匿名函数因为无法获取函数的引用而无法取消监听。</p>
+<h2 id="AttachEvent"><a href="#AttachEvent" class="headerlink" title="AttachEvent"></a>AttachEvent</h2><p> 在IE6-8中是不支持addEventListener的，取而代之的是attachEvent<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">element.attachEvent(&apos;onclick&apos;,function()&#123;</span><br><span class="line">//function1</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">element.attachEvent(&apos;onclick&apos;,function()&#123;</span><br><span class="line">//function2</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p> 执行顺序也不一样了,先执行后面定义的，也就是function2，再执行function1</p>
+<h1 id="关于事件处理函数的this指向"><a href="#关于事件处理函数的this指向" class="headerlink" title="关于事件处理函数的this指向"></a>关于事件处理函数的this指向</h1><h2 id="内联绑定"><a href="#内联绑定" class="headerlink" title="内联绑定"></a>内联绑定</h2><p> 使用内联方法直接注册事件监听器时，this会直接绑定到全局变量<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;handler();&quot;&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure></p>
+<p> 此时handler中的this会指向window,</p>
+<h2 id="addEventListener-1"><a href="#addEventListener-1" class="headerlink" title="addEventListener"></a>addEventListener</h2><p> 用这种方式绑定this会指向绑定触发事件的元素的引用。</p>
+<h2 id="AttachEvent-1"><a href="#AttachEvent-1" class="headerlink" title="AttachEvent"></a>AttachEvent</h2><p> this值会变成window对象。</p>
 
       
     </div>
@@ -360,28 +322,18 @@ reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JS/" rel="tag">#JS</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/04/extend/" rel="next" title="JS中的继承">
-                <i class="fa fa-chevron-left"></i> JS中的继承
+              <a href="/2016/07/22/常用DOM操作/" rel="next" title="常用DOM操作">
+                <i class="fa fa-chevron-left"></i> 常用DOM操作
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/27/doctype/" rel="prev" title="DOCTYPE">
-                DOCTYPE <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -495,7 +447,7 @@ reaadyState表示XHR对象的状态：值、数值、说明UNSENT 0 成功创建
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax"><span class="nav-number">1.</span> <span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">1.2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XHR简单用法"><span class="nav-number">1.3.</span> <span class="nav-text">XHR简单用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器差异"><span class="nav-number">1.4.</span> <span class="nav-text">浏览器差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IE"><span class="nav-number">1.5.</span> <span class="nav-text">IE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#opera"><span class="nav-number">1.6.</span> <span class="nav-text">opera</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#监听事件的方法"><span class="nav-number">1.</span> <span class="nav-text">监听事件的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接对属性赋值时间处理函数"><span class="nav-number">1.1.</span> <span class="nav-text">直接对属性赋值时间处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addEventListener"><span class="nav-number">1.2.</span> <span class="nav-text">addEventListener</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理函数使用匿名函数与有引用的函数区别"><span class="nav-number">1.2.1.</span> <span class="nav-text">事件处理函数使用匿名函数与有引用的函数区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AttachEvent"><span class="nav-number">1.3.</span> <span class="nav-text">AttachEvent</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于事件处理函数的this指向"><span class="nav-number">2.</span> <span class="nav-text">关于事件处理函数的this指向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内联绑定"><span class="nav-number">2.1.</span> <span class="nav-text">内联绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#addEventListener-1"><span class="nav-number">2.2.</span> <span class="nav-text">addEventListener</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AttachEvent-1"><span class="nav-number">2.3.</span> <span class="nav-text">AttachEvent</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

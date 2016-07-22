@@ -80,7 +80,9 @@
 
 
 
-<meta name="description" content="正则表达式正则表达式基本语法
+<meta name="description" content="正则表达式
+参考链接：http://deerchao.net/tutorials/regex/regex.htm
+正则表达式基本语法
 ^代表字符串的开头
 $代表字符串的结尾
 
@@ -90,21 +92,14 @@ $代表字符串的结尾
 \w匹配任意字母或者数字或者下划线或者汉字 
 \s匹配任意的空白符
 
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
+以上匹配符的字母换成大写即可变成反义匹配。如\W变成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式">
 <meta property="og:url" content="http://hyuni.cn/2016/05/02/RegExp/index.html">
 <meta property="og:site_name" content="Hyuni's Blog">
-<meta property="og:description" content="正则表达式正则表达式基本语法
+<meta property="og:description" content="正则表达式
+参考链接：http://deerchao.net/tutorials/regex/regex.htm
+正则表达式基本语法
 ^代表字符串的开头
 $代表字符串的结尾
 
@@ -114,20 +109,13 @@ $代表字符串的结尾
 \w匹配任意字母或者数字或者下划线或者汉字 
 \s匹配任意的空白符
 
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
-<meta property="og:updated_time" content="2016-06-16T05:58:51.538Z">
+以上匹配符的字母换成大写即可变成反义匹配。如\W变成">
+<meta property="og:updated_time" content="2016-07-20T13:35:48.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="正则表达式正则表达式基本语法
+<meta name="twitter:description" content="正则表达式
+参考链接：http://deerchao.net/tutorials/regex/regex.htm
+正则表达式基本语法
 ^代表字符串的开头
 $代表字符串的结尾
 
@@ -137,16 +125,7 @@ $代表字符串的结尾
 \w匹配任意字母或者数字或者下划线或者汉字 
 \s匹配任意的空白符
 
-以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符
-
-\B
-\D
-\W
-\S
-
-
-
-.   匹配除了换行符以外的">
+以上匹配符的字母换成大写即可变成反义匹配。如\W变成">
 
 
 
@@ -344,7 +323,9 @@ $代表字符串的结尾
       
 
       
-        <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="正则表达式基本语法"><a href="#正则表达式基本语法" class="headerlink" title="正则表达式基本语法"></a>正则表达式基本语法</h2><ul>
+        <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><hr>
+<p>参考链接：<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">http://deerchao.net/tutorials/regex/regex.htm</a></p>
+<h2 id="正则表达式基本语法"><a href="#正则表达式基本语法" class="headerlink" title="正则表达式基本语法"></a>正则表达式基本语法</h2><ul>
 <li>^代表字符串的开头</li>
 <li>$代表字符串的结尾</li>
 </ul>
@@ -381,8 +362,28 @@ $代表字符串的结尾
 </ul>
 <p><code>练习：解读 ((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?) 匹配IP地址的正则表达式。</code></p>
 <p><code>&lt;a[^&gt;]+&gt;匹配用尖括号括起来的以a开头的字符串。</code></p>
-<hr>
-<h2 id="JS中的正则表达式"><a href="#JS中的正则表达式" class="headerlink" title="JS中的正则表达式"></a>JS中的正则表达式</h2><p>引用：<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">http://deerchao.net/tutorials/regex/regex.htm</a></p>
+<h2 id="JS中的RegExp类型"><a href="#JS中的RegExp类型" class="headerlink" title="JS中的RegExp类型"></a>JS中的RegExp类型</h2><h3 id="新建RegExp实例"><a href="#新建RegExp实例" class="headerlink" title="新建RegExp实例"></a>新建RegExp实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">语法： /模式/参数</span><br><span class="line">var reg1 = /[bc]at/i</span><br><span class="line">var reg2 = new RegExp(&apos;[bc]at&apos;,&apos;i&apos;);</span><br><span class="line">var reg3 = new RegExp([bc]at,&apos;i&apos;);</span><br><span class="line">//三者等价</span><br></pre></td></tr></table></figure>
+<p>pattern是上一节的语法所表示的正则表达式。flags相当于正则表达式的使用参数.有如下几种  </p>
+<ul>
+<li>g 表示全局模式，表示即使发现了第一个匹配结果也将继续匹配直到匹配完整个字符串。</li>
+<li>i 表示不区分大小写。</li>
+<li>m 表示多行模式 即使遇到换行的时候也将继续匹配直到匹配完整个字符串</li>
+</ul>
+<h3 id="RegExp实例属性"><a href="#RegExp实例属性" class="headerlink" title="RegExp实例属性"></a>RegExp实例属性</h3><ul>
+<li>global  bool类型 表示是否设置了g标志</li>
+<li>ignoreCase bool类型 表示是否设置了i标志</li>
+<li>lastIndex number类型 表示开始搜索下一个匹配项的字符位置，从0开始。</li>
+<li>multiline bool类型 表示是否设置了m标志</li>
+<li>source 正则表达式的字符串表示。</li>
+</ul>
+<h3 id="RegExp实例方法"><a href="#RegExp实例方法" class="headerlink" title="RegExp实例方法"></a>RegExp实例方法</h3><ul>
+<li>exec(str) 最主要的方法，str参数是要匹配的字符串，没有匹配项时返回null,如果成功匹配，则返回一个有input和index属性的数组.<br>input表示应用正则表达式的字符串。<br>index表示匹配项在字符串中的位置。</li>
+<li>test(str)，str参数是要匹配的字符串，在模式与参数匹配的情况下返回true,否则false。</li>
+</ul>
+<h2 id="RegExp与String共同使用的方法"><a href="#RegExp与String共同使用的方法" class="headerlink" title="RegExp与String共同使用的方法"></a>RegExp与String共同使用的方法</h2><h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><p>String.search(reg).搜索符合规则的内容，搜索失败返回-1，成功则返回出现的位置。  </p>
+<h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><p>String.match(reg).搜索符合规则的内容，成功返回所有匹配成功的内容组成的数组，失败返回null。</p>
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p>String.replace(reg,newStr|callback):newStr用来替换匹配成功的内容。或者第二参数传入一个回掉函数，该函数接受一个参数，表示成功匹配到的内容。</p>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><p>String.split(separator[,limit]),把字符串分割成一个字符串数组，reg参数可以是正则表达式或者字符串。</p>
 
       
     </div>
@@ -486,7 +487,7 @@ $代表字符串的结尾
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -532,7 +533,7 @@ $代表字符串的结尾
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式基本语法"><span class="nav-number">1.1.</span> <span class="nav-text">正则表达式基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中的正则表达式"><span class="nav-number">1.2.</span> <span class="nav-text">JS中的正则表达式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式基本语法"><span class="nav-number">1.1.</span> <span class="nav-text">正则表达式基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中的RegExp类型"><span class="nav-number">1.2.</span> <span class="nav-text">JS中的RegExp类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建RegExp实例"><span class="nav-number">1.2.1.</span> <span class="nav-text">新建RegExp实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp实例属性"><span class="nav-number">1.2.2.</span> <span class="nav-text">RegExp实例属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp实例方法"><span class="nav-number">1.2.3.</span> <span class="nav-text">RegExp实例方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp与String共同使用的方法"><span class="nav-number">1.3.</span> <span class="nav-text">RegExp与String共同使用的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#search"><span class="nav-number">1.3.1.</span> <span class="nav-text">search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match"><span class="nav-number">1.3.2.</span> <span class="nav-text">match</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#replace"><span class="nav-number">1.3.3.</span> <span class="nav-text">replace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split"><span class="nav-number">1.3.4.</span> <span class="nav-text">split</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

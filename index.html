@@ -249,6 +249,441 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/22/JS-Event/" itemprop="url">
+                  JS中的事件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-22T20:11:52+08:00" content="2016-07-22">
+              2016-07-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="监听事件的方法"><a href="#监听事件的方法" class="headerlink" title="监听事件的方法"></a>监听事件的方法</h1><h2 id="直接对属性赋值时间处理函数"><a href="#直接对属性赋值时间处理函数" class="headerlink" title="直接对属性赋值时间处理函数"></a>直接对属性赋值时间处理函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.onclick = function()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p> 这种方式适用于DOM0级的事件监听，事件方法有’on’字样。这种方法不能添加多个事件处理器。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">element.onclick = function()&#123;</span><br><span class="line">//function 1</span><br><span class="line">&#125;</span><br><span class="line">element.onclick = function()&#123;</span><br><span class="line">//function 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> 这种情况时，function1会被function2覆盖掉。</p>
+<h2 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener"></a>addEventListener</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(&apos;event&apos;,function()&#123;</span><br><span class="line">//function1</span><br><span class="line">&#125;);</span><br><span class="line">element.addEventListener(&apos;event&apos;,function()&#123;</span><br><span class="line">//function2</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p> 这种方法则可以有多个处理函数。执行顺序为先执行前面定义的，也就是function1,然后再运行function2.<br> addEventListener使用的是DOM2时间，也就是没有’on’字样。<br> 并且使用这种方法还可以选择是在捕获阶段触发还是在冒泡阶段触发。<br> <strong>它对任何DOM元素都是有效的，而不仅仅只对HTML元素有效。</strong></p>
+<h3 id="事件处理函数使用匿名函数与有引用的函数区别"><a href="#事件处理函数使用匿名函数与有引用的函数区别" class="headerlink" title="事件处理函数使用匿名函数与有引用的函数区别"></a>事件处理函数使用匿名函数与有引用的函数区别</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(&apos;event&apos;,function()&#123;</span><br><span class="line"> //function1</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>像上述代码中直接使用匿名函数作为事件处理函数可以使用element.removeEventListener来取消事件的监听<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myElement.removeEventListener(&quot;click&quot;, processEvent, false);</span><br></pre></td></tr></table></figure></p>
+<p>而使用匿名函数因为无法获取函数的引用而无法取消监听。</p>
+<h2 id="attachEvent"><a href="#attachEvent" class="headerlink" title="attachEvent"></a>attachEvent</h2><p> 在IE6-8中是不支持addEventListener的，取而代之的是attachEvent<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">element.attachEvent(&apos;onclick&apos;,function()&#123;</span><br><span class="line">//function1</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">element.attachEvent(&apos;onclick&apos;,function()&#123;</span><br><span class="line">//function2</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p> 执行顺序也不一样了,先执行后面定义的，也就是function2，再执行function1</p>
+<h2 id="关于事件处理函数的this指向"><a href="#关于事件处理函数的this指向" class="headerlink" title="关于事件处理函数的this指向"></a>关于事件处理函数的this指向</h2><h3 id="内联绑定"><a href="#内联绑定" class="headerlink" title="内联绑定"></a>内联绑定</h3><p> 使用内联方法直接注册事件监听器时，this会直接绑定到全局变量<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;handler();&quot;&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure></p>
+<p> 此时handler中的this会指向window,</p>
+<h3 id="addEventListener-1"><a href="#addEventListener-1" class="headerlink" title="addEventListener"></a>addEventListener</h3><p>用这种方式绑定this会指向绑定触发事件的元素的引用。</p>
+<h3 id="attachEvent-1"><a href="#attachEvent-1" class="headerlink" title="attachEvent"></a>attachEvent</h3><p>this值会变成window对象。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/22/常用DOM操作/" itemprop="url">
+                  常用DOM操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-22T17:55:00+08:00" content="2016-07-22">
+              2016-07-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="NodeList-amp-HTMLCollection"><a href="#NodeList-amp-HTMLCollection" class="headerlink" title="NodeList &amp; HTMLCollection"></a>NodeList &amp; HTMLCollection</h1><p>相同点：都有length属性。  两个类都是实时的，也就是任何动态操作DOM都会实时反映在这两个类中。<br>不同点</p>
+<ul>
+<li>NodeList的元素是Node，HTMLCollection的元素是Element。</li>
+<li>HTMLCollection有一个namedItem方法，可以快速获取元素。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;p&gt;This is Some Text&lt;/p&gt;</span><br><span class="line">    &lt;img name=&quot;test&quot; src=&quot;test.jpg&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>那么假设得到了这个div的子元素构成的HTMLCollection，叫做list，那么使用list.namedItem(“test”)就可以直接得到里面的img元素。  </p>
+<ul>
+<li>HTMLCollection有一个item（index）方法，通过索引返回对象。</li>
+<li>NodeList通过item(index)使用索引获取对象。</li>
+</ul>
+<h1 id="Node-amp-Element"><a href="#Node-amp-Element" class="headerlink" title="Node &amp; Element"></a>Node &amp; Element</h1><p>Element继承了node类.<br>Node不光有element这种节点类型，还有attr属性节点，text文本节点等等。<br>Element是以HTML标签为单位。而节点则更细致。甚至空格，换行符都可以算作一个文本节点。 </p>
+<h1 id="选择DOM"><a href="#选择DOM" class="headerlink" title="选择DOM"></a>选择DOM</h1><ul>
+<li>document.getElementById(String id)</li>
+<li>document.getElementByTagName(String tagName)<br>该方法返回的HTMLCollection是实时的，也就是如果通过该方法获取元素之后，再对DOM树进行操作后，该方法返回的结果也会动态的更新。</li>
+<li><p>document.getElementByClassName(String className)<br>改方法返回HTMLCollection，该方法不光是document为根元素查找，也可以指定根元素进行查找。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">somedom.getElementByClassName(String className)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>document.querySelector(String selector)<br>该方法使用深度优先，前序遍历。selector使用CSS选择器的字符串形式。如果没有找到元素返回null。找到多个则返回第一个匹配到的元素。<br><strong>使用CSS伪类不会返回任何元素</strong></p>
+</li>
+<li>document.querySelectorAll(String selectors)<br>该方法使用深度优先，前序遍历，返回选择器所匹配的所有元素。返回类型是NodeList.<br>selectors可以是用逗号隔开的多个选择器。<br><strong>WebKit 内核的浏览器有一个bug: 如果 selectors参数中包含 CSS伪类 ,返回的elementList包含一个<html> 元素,而不是空的.</html></strong></li>
+</ul>
+<h1 id="创建DOM"><a href="#创建DOM" class="headerlink" title="创建DOM"></a>创建DOM</h1><ul>
+<li>document.createElement(String tagName)<br>该方法传入一个标签名，创建一个相应的元素。</li>
+<li>document.createTextNode(String string)<br>参数string为文本节点的内容。</li>
+</ul>
+<h1 id="删除DOM"><a href="#删除DOM" class="headerlink" title="删除DOM"></a>删除DOM</h1><ul>
+<li>element.remove()<br>将该元素从DOM树中删除。（IE不支持,safari移动端不支持）</li>
+<li>node.removeChild(child)<br>node是child的父节点。</li>
+</ul>
+<h1 id="添加DOM"><a href="#添加DOM" class="headerlink" title="添加DOM"></a>添加DOM</h1><ul>
+<li>node.appendChild(dom)<br>dom一般为document.createElement()创建出来的节点。插入到兄弟节点的最后。</li>
+<li>node.insertBefore()  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var insertedElement = parentElement.insertBefore(newElement, referenceElement);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果referenceElement为null则newElement将被插入到子节点的末尾。如果newElement已经在DOM树中，newElement首先会从DOM树中移除。</p>
+<h1 id="操作Class"><a href="#操作Class" class="headerlink" title="操作Class"></a>操作Class</h1><ul>
+<li><p>element.classList<br>该方法是一个只读属性，返回一个DOMTokenList，包含所有Class属性。<br>该方法返回的对象具有如下几个方法  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var classes = element.classList;</span><br><span class="line">classes.add(String [, String] ); //添加给定class属性，如果元素已有该class则忽略。</span><br><span class="line">classes.remove(String [, String] ) //删除给定的class属性。</span><br><span class="line">classes.item(number) 根据索引返回class</span><br><span class="line">classes.toggle(String[,force])  如果只有第一个参数，如果有该class则删除，没有则添加。如果添加第二个参数，true为添加该class，flase则为移除。</span><br><span class="line">contains(String)  是否拥有该class</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>element.className<br>返回一个字符串，多个class属性由空格分隔。<br><strong>IE浏览器不支持第二个参数</strong></p>
+</li>
+</ul>
+<h1 id="操作ID"><a href="#操作ID" class="headerlink" title="操作ID"></a>操作ID</h1><ul>
+<li>element.id;<br>该属性返回当前节点的id。也可以通过设置该属性来设置该节点的ID值。</li>
+</ul>
+<h1 id="获取标签名"><a href="#获取标签名" class="headerlink" title="获取标签名"></a>获取标签名</h1><ul>
+<li>element.tagName<br>该属性返回该节点的标签名。对于元素节点来说该属性和nodeName属性是相同的。</li>
+</ul>
+<h1 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h1><ul>
+<li>element.getAttribute(String)<br>该方法返回指定属性的值，如果指定属性不存在则按标准来说返回null,有些返回””.</li>
+<li>element.hasAttribute(String)<br>该方法放回一个布尔值，指示是否有该属性。</li>
+<li>element.removeAttribute(String)<br>删除指定属性。</li>
+<li>element.setAttribute(String,String)<br>添加一个新的属性。或改变已有属性的值。</li>
+</ul>
+<h1 id="后代操作"><a href="#后代操作" class="headerlink" title="后代操作"></a>后代操作</h1><ul>
+<li>element.children<br>该只读属性返回一个当前元素的子元素HTTPCollection</li>
+<li>element.children.length<br>返回有多少个后代元素。</li>
+<li>element.firstElementChild<br>获取第一个子元素</li>
+<li>element.lastElementChild<br>获取最后一个子元素</li>
+</ul>
+<h1 id="操作节点内容"><a href="#操作节点内容" class="headerlink" title="操作节点内容"></a>操作节点内容</h1><ul>
+<li>element.innerHTML<br>该属性返回该节点内部（不包括自身)的所有内容以HTML代码形式表现出来，也就是包括HTML标签。</li>
+<li>element.outerHTML<br>该属性返回该节点（包括自身)的所有内容以HTML代码形式表现出来，也就是包括HTML标签。</li>
+</ul>
+<h1 id="样式编辑"><a href="#样式编辑" class="headerlink" title="样式编辑"></a>样式编辑</h1><ul>
+<li>element.style<br>使用该属性获取或设置css样式都是内嵌样式，也就是在HTML标签中的style属性中设置。</li>
+<li><p>window.getComputedStyle(element,[pseudoElt])<br>element 指定的元素<br>pseudoElt 指定一个伪元素进行匹配。对于常规的元素来说可省略。<br>该方法返回当前元素所有最终使用的CSS属性值。返回的是一个CSS样式声明对象([object CSSStyleDeclaration])。READ ONLY。<br>使用CSSStyleDeclaration的getPropertyValue（String）方法返回指定的CSS属性的值，参数传入字符串形式的CSS属性名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.getComputedStyle(element, null).getPropertyValue(&quot;float&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>element.currentStyle<br>改属性是IE特有的一个属性，用来返回该对象的CSS样式声明对象。<br>对于IE6~8需要使用getAttribute方法访问CSS样式对象中的属性。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/22/CSS动画/" itemprop="url">
+                  CSS动画
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-22T12:44:00+08:00" content="2016-07-22">
+              2016-07-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h1><p>使用transform属性定义动画主要是定义简单动画。<br>优点：简单易用，定义简单动画的时候首选。<br>缺点</p>
+<ul>
+<li>只能定义动画的起始形态与结束形态，中间过程不可控</li>
+<li>而且每一个属性的动画都要单独写一条语句,或者使用matrix()方法 </li>
+<li>只能播放一次。</li>
+<li>不能暂停/继续</li>
+</ul>
+<h2 id="元素的2D-3D变换属性"><a href="#元素的2D-3D变换属性" class="headerlink" title="元素的2D/3D变换属性"></a>元素的2D/3D变换属性</h2><p>以下属性需要配合transform属性一起使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#id&#123;</span><br><span class="line">  transform:rotate(45deg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>translate(x,y) 根据当前位置移动x,y的坐标。允许负值。</li>
+<li>rotate(angle) 元素顺时针旋转deg角度（单位是角度），允许负值。</li>
+<li>scale(x,y) 元素尺寸增加或缩小x,y倍。</li>
+<li>skew(x-angle,y-angle) 元素倾斜x°，y°。倾斜的默认原点是元素的中心点。就像把一个长方形倾斜成平行四边形那样倾斜。</li>
+<li>rotateX() 沿X轴做3D旋转</li>
+<li>rotateY() 沿Y轴做3D旋转</li>
+<li>transform-origin(x,y) 改变旋转元素的X,Y轴或者说是中心点。x预设值有left center right,y预设值有top center bottm.单位可以使用绝对长度或者%.</li>
+<li>transform-style 子元素是否应用3D变换。默认flat，不保留，preserve-3d属性为保留。</li>
+</ul>
+<h2 id="transition属性应用动画"><a href="#transition属性应用动画" class="headerlink" title="transition属性应用动画"></a>transition属性应用动画</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: css属性 时间;</span><br></pre></td></tr></table></figure>
+<p>这样即可使变化的css属性以动画的形式表现出来。如果不规定时间则不会有动画效果，因为时间默认是0.<br>效果开始于指定的 CSS 属性改变值时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">div</span><br><span class="line">&#123;</span><br><span class="line">width:100px;</span><br><span class="line">transition: width 2s;</span><br><span class="line">-moz-transition: width 2s;	/* Firefox 4 */</span><br><span class="line">-webkit-transition: width 2s;	/* Safari 和 Chrome */</span><br><span class="line">-o-transition: width 2s;	/* Opera */</span><br><span class="line">&#125;</span><br><span class="line">div:hover</span><br><span class="line">&#123;</span><br><span class="line">width:300px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上CSS属性会使当鼠标悬停在div上面时，使DIV宽度以动画的形式从100PX变长到300PX。<br>对于使用颜色的属性，transitions同样适用。</p>
+<p>##transition属性 </p>
+<ul>
+<li>transition: 简写属性，包含四个属性。transition-property transition-duration transition-timing-function transition-delay。  </li>
+<li>transition-property: 使用动画的CSS属性。  </li>
+<li>transition-duration：动画的过度时间。</li>
+<li>transition-timing-function: 速度曲线，默认是’ease’,还有几个预设值，linear    规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。<br>ease    规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。<br>ease-in    规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。<br>ease-out    规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。<br>ease-in-out    规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。<br>cubic-bezier(n,n,n,n)  自定义速度曲线（三次卡塞尔曲线）。</li>
+<li>transition-delay: 动画开始前等待时间。</li>
+</ul>
+<h1 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h1><p>使用animation创建动画需要@keyframes定义关键帧配合使用。<br>优点</p>
+<ul>
+<li>可以定义多个关键帧</li>
+<li>可以在一个keyframes中同时定义多个属性的变化动画。</li>
+<li>可以暂停/继续播放动画</li>
+<li>可以循环播放动画</li>
+<li>可以规定动画播放结束之后是否逆向播放动画使元素回到动画之前的状态。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## animation动画</span><br><span class="line"></span><br><span class="line">### 兼容性</span><br><span class="line">目前浏览器都支持 @keyframes 规则。</span><br><span class="line">Firefox 支持替代的 @-moz-keyframes 规则。</span><br><span class="line">Opera 支持替代的 @-o-keyframes 规则。</span><br><span class="line">Safari 和 Chrome 支持替代的 @-webkit-keyframes 规则。</span><br><span class="line"></span><br><span class="line">@keyframes myfirst</span><br><span class="line">&#123;</span><br><span class="line">from &#123;background: red;&#125;</span><br><span class="line">to &#123;background: yellow;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-moz-keyframes myfirst /* Firefox */</span><br><span class="line">&#123;</span><br><span class="line">from &#123;background: red;&#125;</span><br><span class="line">to &#123;background: yellow;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-webkit-keyframes myfirst /* Safari 和 Chrome */</span><br><span class="line">&#123;</span><br><span class="line">from &#123;background: red;&#125;</span><br><span class="line">to &#123;background: yellow;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-o-keyframes myfirst /* Opera */</span><br><span class="line">&#123;</span><br><span class="line">from &#123;background: red;&#125;</span><br><span class="line">to &#123;background: yellow;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@keyframes myfirst</span><br><span class="line">&#123;</span><br><span class="line">0%   &#123;background: red;&#125;</span><br><span class="line">25%  &#123;background: yellow;&#125;</span><br><span class="line">50%  &#123;background: blue;&#125;</span><br><span class="line">100% &#123;background: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-moz-keyframes myfirst /* Firefox */</span><br><span class="line">&#123;</span><br><span class="line">0%   &#123;background: red;&#125;</span><br><span class="line">25%  &#123;background: yellow;&#125;</span><br><span class="line">50%  &#123;background: blue;&#125;</span><br><span class="line">100% &#123;background: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-webkit-keyframes myfirst /* Safari 和 Chrome */</span><br><span class="line">&#123;</span><br><span class="line">0%   &#123;background: red;&#125;</span><br><span class="line">25%  &#123;background: yellow;&#125;</span><br><span class="line">50%  &#123;background: blue;&#125;</span><br><span class="line">100% &#123;background: green;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-o-keyframes myfirst /* Opera */</span><br><span class="line">&#123;</span><br><span class="line">0%   &#123;background: red;&#125;</span><br><span class="line">25%  &#123;background: yellow;&#125;</span><br><span class="line">50%  &#123;background: blue;&#125;</span><br><span class="line">100% &#123;background: green;&#125;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用@keyframes定义动画的时候同时需要定义一个动画的名称。<br>定义keyframes关键帧的时候可以使用%来规定在动画运行到百分之多少的时候关键帧变化成什么样。或者使用from和tu关键词，分别代表0%,100%。<br>应用@keyframes的时候只需要在animation属性上应用@keyframes的名称即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  animation:myfirst 3s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="animation属性"><a href="#animation属性" class="headerlink" title="animation属性"></a>animation属性</h2><p>animation: 简写属性 设置6个属性</p>
+<ul>
+<li>animation-name</li>
+<li>animation-duration</li>
+<li>animation-timing-function</li>
+<li>animation-delay</li>
+<li>animation-iteration-count</li>
+<li>animation-direction</li>
+</ul>
+<p>animation-name: @keyframes的动画名称<br>animation-duration: 规定动画完成的一个周期所用的时间<br>animation-time-function:预设值与默认值同transition<br>animation-delay： 动画延迟多久之后开始<br>animation-iteration-count:播放次数<br>animation-direction:默认值normal，alternate动画应该轮流反响播放。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/07/行内元素的排版布局/" itemprop="url">
                   行内元素的排版布局
                 </a>
@@ -711,156 +1146,11 @@
 * statusText HTTP状态的说明   
 </code></pre><p>3.收到响应后，第一步检查status属性。在进行下一步操作。</p>
 <p>但是如果操作是异步的，则要通过监控readyState属性来操作。每当readyState属性变化时会触发onreadystatechange函数。我们一般只对readyState==4感兴趣。  </p>
-<h2 id="使用FormData对象传送文件与表单数据"><a href="#使用FormData对象传送文件与表单数据" class="headerlink" title="使用FormData对象传送文件与表单数据"></a>使用FormData对象传送文件与表单数据</h2><h2 id="浏览器差异"><a href="#浏览器差异" class="headerlink" title="浏览器差异"></a>浏览器差异</h2><h2 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h2><p>对于IE连XHR对象都不一样。另看文章。</p>
+<h2 id="浏览器差异"><a href="#浏览器差异" class="headerlink" title="浏览器差异"></a>浏览器差异</h2><h2 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h2><p>对于IE连XHR对象都不一样。为了兼容IE6需要使用下面的方法创建对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//为了兼容IE6</span></span><br><span class="line">    xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其他的操作则与W3C标准一样，只是创建对象的时候有所不同。</p>
 <h2 id="opera"><a href="#opera" class="headerlink" title="opera"></a>opera</h2><ul>
 <li>opera不对readystatechange的触发函数传入一个event对象，所以XHR对象的作用域应该包含readystatechange的作用域。</li>
 <li>opera没有定义就绪状态常量，也就是不能使用UNSENT这样的常量作为readystate的值，而必须使用数字。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/04/Inline&Block/" itemprop="url">
-                  行内元素与块级元素汇总
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-04T11:00:00+08:00" content="2016-05-04">
-              2016-05-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="行内元素与块级元素"><a href="#行内元素与块级元素" class="headerlink" title="行内元素与块级元素"></a>行内元素与块级元素</h1><h2 id="Block-Element-块级元素"><a href="#Block-Element-块级元素" class="headerlink" title="Block Element 块级元素"></a>Block Element 块级元素</h2><p>height,width可以设置。每个块级元素默认占据一整行。</p>
-<h2 id="Inline-Element-内联元素"><a href="#Inline-Element-内联元素" class="headerlink" title="Inline Element 内联元素"></a>Inline Element 内联元素</h2><p>height,width不可设置。宽度随自身内容的宽度变化。默认不占据一整行。</p>
-<h2 id="常用元素"><a href="#常用元素" class="headerlink" title="常用元素"></a>常用元素</h2><h3 id="Block-element"><a href="#Block-element" class="headerlink" title="Block element"></a>Block element</h3><ul>
-<li>address - 地址</li>
-<li>blockquote - 块引用</li>
-<li>center - 举中对齐块</li>
-<li>dir - 目录列表</li>
-<li>div - 常用块级容易，也是css layout的主要标签</li>
-<li>dl - 定义列表</li>
-<li>form - 交互表单</li>
-<li>h1 - 大标题</li>
-<li>h2 - 副标题</li>
-<li>h3 - 3级标题</li>
-<li>h4 - 4级标题</li>
-<li>h5 - 5级标题</li>
-<li>h6 - 6级标题</li>
-<li>hr - 水平分隔线</li>
-<li>menu - 菜单列表</li>
-<li>noframes - frames可选内容，对于不支持frame的浏览器显示此区块内容</li>
-<li>noscript - 可选脚本内容,对于不支持script的浏览器显示此内容</li>
-<li>ol - 排序表单</li>
-<li>p - 段落</li>
-<li>pre - 格式化文本</li>
-<li>table - 表格</li>
-<li>ul - 非排序列表</li>
-</ul>
-<h3 id="Inline-element"><a href="#Inline-element" class="headerlink" title="Inline element"></a>Inline element</h3><ul>
-<li>a - 锚点</li>
-<li>abbr - 缩写</li>
-<li>acronym - 首字</li>
-<li>b - 粗体(不推荐)</li>
-<li>big - 大字体</li>
-<li>br - 换行</li>
-<li>dfn - 定义字段</li>
-<li>em - 强调</li>
-<li>font - 字体设定(不推荐)</li>
-<li>i - 斜体</li>
-<li>img - 图片</li>
-<li>input - 输入框</li>
-<li>label - 表格标签</li>
-<li>q - 短引用</li>
-<li>s - 中划线(不推荐)</li>
-<li>samp - 定义范例计算机代码</li>
-<li>select - 项目选择</li>
-<li>small - 小字体文本</li>
-<li>span - 常用内联容器，定义文本内区块</li>
-<li>strike - 中划线</li>
-<li>strong - 粗体强调</li>
-<li>sub - 下标</li>
-<li>sup - 上标</li>
-<li>textarea - 多行文本输入框</li>
-<li>u - 下划线</li>
 </ul>
 
           
@@ -962,6 +1252,167 @@
 <h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><p>结合原型链继承和借用构造函数继承同时使用。</p>
 <h2 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function object(o)&#123;</span><br><span class="line">    function F()&#123;&#125;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    return new F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function createAnother(original)&#123;</span><br><span class="line">    var clone = object(original);</span><br><span class="line">    clone.sayHi=function()&#123;</span><br><span class="line">        alert(&quot;hi&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return clone;</span><br><span class="line">&#125;</span><br><span class="line">var person = &#123;</span><br><span class="line">    name: &quot;hyuni&quot;</span><br><span class="line">&#125;;</span><br><span class="line">var anotherPerson = createAnother(person);</span><br><span class="line">anotherPerson.sayHi(); //hi；4</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/04/Inline&Block/" itemprop="url">
+                  行内元素,块级元素,空元素汇总
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-04T11:00:00+08:00" content="2016-05-04">
+              2016-05-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="行内元素与块级元素"><a href="#行内元素与块级元素" class="headerlink" title="行内元素与块级元素"></a>行内元素与块级元素</h1><h2 id="Block-Element-块级元素"><a href="#Block-Element-块级元素" class="headerlink" title="Block Element 块级元素"></a>Block Element 块级元素</h2><p>height,width可以设置。每个块级元素默认占据一整行。也就是默认宽是容器的100%。</p>
+<h2 id="Inline-Element-内联元素"><a href="#Inline-Element-内联元素" class="headerlink" title="Inline Element 内联元素"></a>Inline Element 内联元素</h2><p>height,width不可设置。宽度随自身内容的宽度变化。默认不占据一整行。</p>
+<h2 id="Display-Inline-Block"><a href="#Display-Inline-Block" class="headerlink" title="Display:Inline-Block"></a>Display:Inline-Block</h2><p>CSS中将元素设置为Display:inline-block,可以使行内元素具有一些块级元素的特点。也就是内部表现类似Block，外部表现类似Inline。</p>
+<ul>
+<li>可以设置宽高</li>
+<li>默认占一行。</li>
+<li>IE6/7不支持Inline-Block.需要有*zoom:1来触发元素hasLayout才会表现出来。</li>
+</ul>
+<h2 id="常用元素"><a href="#常用元素" class="headerlink" title="常用元素"></a>常用元素</h2><h3 id="Block-element"><a href="#Block-element" class="headerlink" title="Block element"></a>Block element</h3><ul>
+<li>address - 地址</li>
+<li>blockquote - 块引用</li>
+<li>center - 举中对齐块</li>
+<li>dir - 目录列表</li>
+<li>div - 常用块级容易，也是css layout的主要标签</li>
+<li>dl - 定义列表</li>
+<li>form - 交互表单</li>
+<li>h1 - 大标题</li>
+<li>h2 - 副标题</li>
+<li>h3 - 3级标题</li>
+<li>h4 - 4级标题</li>
+<li>h5 - 5级标题</li>
+<li>h6 - 6级标题</li>
+<li>hr - 水平分隔线</li>
+<li>menu - 菜单列表</li>
+<li>noframes - frames可选内容，对于不支持frame的浏览器显示此区块内容</li>
+<li>noscript - 可选脚本内容,对于不支持script的浏览器显示此内容</li>
+<li>ol - 排序表单</li>
+<li>p - 段落</li>
+<li>pre - 格式化文本</li>
+<li>table - 表格</li>
+<li>ul - 非排序列表</li>
+</ul>
+<h3 id="Inline-element"><a href="#Inline-element" class="headerlink" title="Inline element"></a>Inline element</h3><ul>
+<li>a - 锚点</li>
+<li>abbr - 缩写</li>
+<li>acronym - 首字</li>
+<li>b - 粗体(不推荐)</li>
+<li>big - 大字体</li>
+<li>br - 换行</li>
+<li>dfn - 定义字段</li>
+<li>em - 强调</li>
+<li>font - 字体设定(不推荐)</li>
+<li>i - 斜体</li>
+<li>img - 图片</li>
+<li>input - 输入框</li>
+<li>label - 表格标签</li>
+<li>q - 短引用</li>
+<li>s - 中划线(不推荐)</li>
+<li>samp - 定义范例计算机代码</li>
+<li>select - 项目选择</li>
+<li>small - 小字体文本</li>
+<li>span - 常用内联容器，定义文本内区块</li>
+<li>strike - 中划线</li>
+<li>strong - 粗体强调</li>
+<li>sub - 下标</li>
+<li>sup - 上标</li>
+<li>textarea - 多行文本输入框</li>
+<li>u - 下划线</li>
+</ul>
+<h1 id="空元素"><a href="#空元素" class="headerlink" title="空元素"></a>空元素</h1><p>在HTML中，没有内容的元素被称为空元素。<br>在开始标签中添加斜杠，比如 <br>，是关闭空元素的正确方法。</p>
+<ul>
+<li>br - 换行</li>
+<li>hr - 水平线</li>
+<li>input - 表单输入</li>
+<li>img - 图片</li>
+<li>link - 定义文档与外部资源的关系</li>
+<li>meta - 元素可提供有关页面的元信息，比如针对搜索引擎和更新频度的描述和关键词。</li>
+</ul>
+
           
         
       
@@ -1115,141 +1566,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/02/RegExp/" itemprop="url">
-                  正则表达式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-02T13:16:06+08:00" content="2016-05-02">
-              2016-05-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="正则表达式基本语法"><a href="#正则表达式基本语法" class="headerlink" title="正则表达式基本语法"></a>正则表达式基本语法</h2><ul>
-<li>^代表字符串的开头</li>
-<li>$代表字符串的结尾</li>
-</ul>
-<ul>
-<li>\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi</li>
-<li>\d匹配一位数字。 同[0-9]</li>
-<li>\w匹配任意字母或者数字或者下划线或者汉字 </li>
-<li>\s匹配任意的空白符</li>
-</ul>
-<p><code>以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符</code></p>
-<ul>
-<li>\B</li>
-<li>\D</li>
-<li>\W</li>
-<li>\S</li>
-</ul>
-<hr>
-<ul>
-<li>.   匹配除了换行符以外的任何字符。</li>
-<li>*表示数量  *前面的内容可以连续重复匹配任意次数包括0次。</li>
-<li>+表示数量 和*不同的是 必须匹配1次或者1次以上</li>
-<li>? 匹配0次或者1次</li>
-</ul>
-<p><code>如果想匹配 . * + 这样的符号就必须使用转义符 \</code></p>
-<ul>
-<li>{数字}连续匹配n次。 \d{4}-\d{8}匹配电话号。四位区号-八位电话号。{m，n}匹配不少次m次不多于n次。{m,}重复匹配n或者更多次</li>
-</ul>
-<hr>
-<ul>
-<li>[ ]表示匹配集合中的某一个字符</li>
-<li>( )表示分组，相当于子表达式。</li>
-<li>[^x] 匹配除了x以外的任意字符</li>
-<li>(^abcd)匹配除了abcd意外的任意字符</li>
-</ul>
-<p><code>练习：解读 ((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?) 匹配IP地址的正则表达式。</code></p>
-<p><code>&lt;a[^&gt;]+&gt;匹配用尖括号括起来的以a开头的字符串。</code></p>
-<hr>
-<h2 id="JS中的正则表达式"><a href="#JS中的正则表达式" class="headerlink" title="JS中的正则表达式"></a>JS中的正则表达式</h2><p>引用：<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">http://deerchao.net/tutorials/regex/regex.htm</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1288,7 +1611,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

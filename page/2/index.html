@@ -82,13 +82,12 @@
 
 <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://hyuni.cn/tags/index.html">
+<meta property="og:title" content="Hyuni's Blog">
+<meta property="og:url" content="http://hyuni.cn/page/2/index.html">
 <meta property="og:site_name" content="Hyuni's Blog">
 <meta property="og:description">
-<meta property="og:updated_time" content="2016-05-27T00:36:01.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="Hyuni's Blog">
 <meta name="twitter:description">
 
 
@@ -107,13 +106,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    标签 | Hyuni's Blog
-  
-</title>
+  <title> Hyuni's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -134,7 +127,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -231,20 +226,169 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <div id="posts" class="posts-expand">
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 5 个标签
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/02/RegExp/" itemprop="url">
+                  正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-02T13:16:06+08:00" content="2016-05-02">
+              2016-05-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
-        <div class="tag-cloud-tags">
-          <a href="/tags/CSS/" style="font-size: 21px; color: #6f6f6f">CSS</a> <a href="/tags/DataBase/" style="font-size: 12px; color: #ccc">DataBase</a> <a href="/tags/HTML/" style="font-size: 30px; color: #111">HTML</a> <a href="/tags/JS/" style="font-size: 30px; color: #111">JS</a> <a href="/tags/Mongodb/" style="font-size: 12px; color: #ccc">Mongodb</a>
-        </div>
-      </div>
+      </header>
     
-  </div>
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><hr>
+<p>参考链接：<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">http://deerchao.net/tutorials/regex/regex.htm</a></p>
+<h2 id="正则表达式基本语法"><a href="#正则表达式基本语法" class="headerlink" title="正则表达式基本语法"></a>正则表达式基本语法</h2><ul>
+<li>^代表字符串的开头</li>
+<li>$代表字符串的结尾</li>
+</ul>
+<ul>
+<li>\b元字符。代表单词的开头或结尾。 \bhi\b 匹配所有的hi</li>
+<li>\d匹配一位数字。 同[0-9]</li>
+<li>\w匹配任意字母或者数字或者下划线或者汉字 </li>
+<li>\s匹配任意的空白符</li>
+</ul>
+<p><code>以上匹配符的字母换成大写即可变成反义匹配。如\W变成匹配任意不是字幕、数字、下划线、汉字的字符</code></p>
+<ul>
+<li>\B</li>
+<li>\D</li>
+<li>\W</li>
+<li>\S</li>
+</ul>
+<hr>
+<ul>
+<li>.   匹配除了换行符以外的任何字符。</li>
+<li>*表示数量  *前面的内容可以连续重复匹配任意次数包括0次。</li>
+<li>+表示数量 和*不同的是 必须匹配1次或者1次以上</li>
+<li>? 匹配0次或者1次</li>
+</ul>
+<p><code>如果想匹配 . * + 这样的符号就必须使用转义符 \</code></p>
+<ul>
+<li>{数字}连续匹配n次。 \d{4}-\d{8}匹配电话号。四位区号-八位电话号。{m，n}匹配不少次m次不多于n次。{m,}重复匹配n或者更多次</li>
+</ul>
+<hr>
+<ul>
+<li>[ ]表示匹配集合中的某一个字符</li>
+<li>( )表示分组，相当于子表达式。</li>
+<li>[^x] 匹配除了x以外的任意字符</li>
+<li>(^abcd)匹配除了abcd意外的任意字符</li>
+</ul>
+<p><code>练习：解读 ((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?) 匹配IP地址的正则表达式。</code></p>
+<p><code>&lt;a[^&gt;]+&gt;匹配用尖括号括起来的以a开头的字符串。</code></p>
+<h2 id="JS中的RegExp类型"><a href="#JS中的RegExp类型" class="headerlink" title="JS中的RegExp类型"></a>JS中的RegExp类型</h2><h3 id="新建RegExp实例"><a href="#新建RegExp实例" class="headerlink" title="新建RegExp实例"></a>新建RegExp实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">语法： /模式/参数</span><br><span class="line">var reg1 = /[bc]at/i</span><br><span class="line">var reg2 = new RegExp(&apos;[bc]at&apos;,&apos;i&apos;);</span><br><span class="line">var reg3 = new RegExp([bc]at,&apos;i&apos;);</span><br><span class="line">//三者等价</span><br></pre></td></tr></table></figure>
+<p>pattern是上一节的语法所表示的正则表达式。flags相当于正则表达式的使用参数.有如下几种  </p>
+<ul>
+<li>g 表示全局模式，表示即使发现了第一个匹配结果也将继续匹配直到匹配完整个字符串。</li>
+<li>i 表示不区分大小写。</li>
+<li>m 表示多行模式 即使遇到换行的时候也将继续匹配直到匹配完整个字符串</li>
+</ul>
+<h3 id="RegExp实例属性"><a href="#RegExp实例属性" class="headerlink" title="RegExp实例属性"></a>RegExp实例属性</h3><ul>
+<li>global  bool类型 表示是否设置了g标志</li>
+<li>ignoreCase bool类型 表示是否设置了i标志</li>
+<li>lastIndex number类型 表示开始搜索下一个匹配项的字符位置，从0开始。</li>
+<li>multiline bool类型 表示是否设置了m标志</li>
+<li>source 正则表达式的字符串表示。</li>
+</ul>
+<h3 id="RegExp实例方法"><a href="#RegExp实例方法" class="headerlink" title="RegExp实例方法"></a>RegExp实例方法</h3><ul>
+<li>exec(str) 最主要的方法，str参数是要匹配的字符串，没有匹配项时返回null,如果成功匹配，则返回一个有input和index属性的数组.<br>input表示应用正则表达式的字符串。<br>index表示匹配项在字符串中的位置。</li>
+<li>test(str)，str参数是要匹配的字符串，在模式与参数匹配的情况下返回true,否则false。</li>
+</ul>
+<h2 id="RegExp与String共同使用的方法"><a href="#RegExp与String共同使用的方法" class="headerlink" title="RegExp与String共同使用的方法"></a>RegExp与String共同使用的方法</h2><h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><p>String.search(reg).搜索符合规则的内容，搜索失败返回-1，成功则返回出现的位置。  </p>
+<h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><p>String.match(reg).搜索符合规则的内容，成功返回所有匹配成功的内容组成的数组，失败返回null。</p>
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p>String.replace(reg,newStr|callback):newStr用来替换匹配成功的内容。或者第二参数传入一个回掉函数，该函数接受一个参数，表示成功匹配到的内容。</p>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><p>String.split(separator[,limit]),把字符串分割成一个字符串数组，reg参数可以是正则表达式或者字符串。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -252,10 +396,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         

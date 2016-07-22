@@ -1,0 +1,673 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="NodeList &amp;amp; HTMLCollection相同点：都有length属性。  两个类都是实时的，也就是任何动态操作DOM都会实时反映在这两个类中。不同点
+
+NodeList的元素是Node，HTMLCollection的元素是Element。
+HTMLCollection有一个namedItem方法，可以快速获取元素。1234&amp;lt;div&amp;gt;    &amp;lt;p&amp;gt;This">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用DOM操作">
+<meta property="og:url" content="http://hyuni.cn/2016/07/22/常用DOM操作/index.html">
+<meta property="og:site_name" content="Hyuni's Blog">
+<meta property="og:description" content="NodeList &amp;amp; HTMLCollection相同点：都有length属性。  两个类都是实时的，也就是任何动态操作DOM都会实时反映在这两个类中。不同点
+
+NodeList的元素是Node，HTMLCollection的元素是Element。
+HTMLCollection有一个namedItem方法，可以快速获取元素。1234&amp;lt;div&amp;gt;    &amp;lt;p&amp;gt;This">
+<meta property="og:updated_time" content="2016-07-22T11:28:26.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用DOM操作">
+<meta name="twitter:description" content="NodeList &amp;amp; HTMLCollection相同点：都有length属性。  两个类都是实时的，也就是任何动态操作DOM都会实时反映在这两个类中。不同点
+
+NodeList的元素是Node，HTMLCollection的元素是Element。
+HTMLCollection有一个namedItem方法，可以快速获取元素。1234&amp;lt;div&amp;gt;    &amp;lt;p&amp;gt;This">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 常用DOM操作 | Hyuni's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hyuni's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                常用DOM操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-22T17:55:00+08:00" content="2016-07-22">
+              2016-07-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="NodeList-amp-HTMLCollection"><a href="#NodeList-amp-HTMLCollection" class="headerlink" title="NodeList &amp; HTMLCollection"></a>NodeList &amp; HTMLCollection</h1><p>相同点：都有length属性。  两个类都是实时的，也就是任何动态操作DOM都会实时反映在这两个类中。<br>不同点</p>
+<ul>
+<li>NodeList的元素是Node，HTMLCollection的元素是Element。</li>
+<li>HTMLCollection有一个namedItem方法，可以快速获取元素。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;p&gt;This is Some Text&lt;/p&gt;</span><br><span class="line">    &lt;img name=&quot;test&quot; src=&quot;test.jpg&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>那么假设得到了这个div的子元素构成的HTMLCollection，叫做list，那么使用list.namedItem(“test”)就可以直接得到里面的img元素。  </p>
+<ul>
+<li>HTMLCollection有一个item（index）方法，通过索引返回对象。</li>
+<li>NodeList通过item(index)使用索引获取对象。</li>
+</ul>
+<h1 id="Node-amp-Element"><a href="#Node-amp-Element" class="headerlink" title="Node &amp; Element"></a>Node &amp; Element</h1><p>Element继承了node类.<br>Node不光有element这种节点类型，还有attr属性节点，text文本节点等等。<br>Element是以HTML标签为单位。而节点则更细致。甚至空格，换行符都可以算作一个文本节点。 </p>
+<h1 id="选择DOM"><a href="#选择DOM" class="headerlink" title="选择DOM"></a>选择DOM</h1><ul>
+<li>document.getElementById(String id)</li>
+<li>document.getElementByTagName(String tagName)<br>该方法返回的HTMLCollection是实时的，也就是如果通过该方法获取元素之后，再对DOM树进行操作后，该方法返回的结果也会动态的更新。</li>
+<li><p>document.getElementByClassName(String className)<br>改方法返回HTMLCollection，该方法不光是document为根元素查找，也可以指定根元素进行查找。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">somedom.getElementByClassName(String className)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>document.querySelector(String selector)<br>该方法使用深度优先，前序遍历。selector使用CSS选择器的字符串形式。如果没有找到元素返回null。找到多个则返回第一个匹配到的元素。<br><strong>使用CSS伪类不会返回任何元素</strong></p>
+</li>
+<li>document.querySelectorAll(String selectors)<br>该方法使用深度优先，前序遍历，返回选择器所匹配的所有元素。返回类型是NodeList.<br>selectors可以是用逗号隔开的多个选择器。<br><strong>WebKit 内核的浏览器有一个bug: 如果 selectors参数中包含 CSS伪类 ,返回的elementList包含一个<html> 元素,而不是空的.</html></strong></li>
+</ul>
+<h1 id="创建DOM"><a href="#创建DOM" class="headerlink" title="创建DOM"></a>创建DOM</h1><ul>
+<li>document.createElement(String tagName)<br>该方法传入一个标签名，创建一个相应的元素。</li>
+<li>document.createTextNode(String string)<br>参数string为文本节点的内容。</li>
+</ul>
+<h1 id="删除DOM"><a href="#删除DOM" class="headerlink" title="删除DOM"></a>删除DOM</h1><ul>
+<li>element.remove()<br>将该元素从DOM树中删除。（IE不支持,safari移动端不支持）</li>
+<li>node.removeChild(child)<br>node是child的父节点。</li>
+</ul>
+<h1 id="添加DOM"><a href="#添加DOM" class="headerlink" title="添加DOM"></a>添加DOM</h1><ul>
+<li>node.appendChild(dom)<br>dom一般为document.createElement()创建出来的节点。插入到兄弟节点的最后。</li>
+<li>node.insertBefore()  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var insertedElement = parentElement.insertBefore(newElement, referenceElement);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果referenceElement为null则newElement将被插入到子节点的末尾。如果newElement已经在DOM树中，newElement首先会从DOM树中移除。</p>
+<h1 id="操作Class"><a href="#操作Class" class="headerlink" title="操作Class"></a>操作Class</h1><ul>
+<li><p>element.classList<br>该方法是一个只读属性，返回一个DOMTokenList，包含所有Class属性。<br>该方法返回的对象具有如下几个方法  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var classes = element.classList;</span><br><span class="line">classes.add(String [, String] ); //添加给定class属性，如果元素已有该class则忽略。</span><br><span class="line">classes.remove(String [, String] ) //删除给定的class属性。</span><br><span class="line">classes.item(number) 根据索引返回class</span><br><span class="line">classes.toggle(String[,force])  如果只有第一个参数，如果有该class则删除，没有则添加。如果添加第二个参数，true为添加该class，flase则为移除。</span><br><span class="line">contains(String)  是否拥有该class</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>element.className<br>返回一个字符串，多个class属性由空格分隔。<br><strong>IE浏览器不支持第二个参数</strong></p>
+</li>
+</ul>
+<h1 id="操作ID"><a href="#操作ID" class="headerlink" title="操作ID"></a>操作ID</h1><ul>
+<li>element.id;<br>该属性返回当前节点的id。也可以通过设置该属性来设置该节点的ID值。</li>
+</ul>
+<h1 id="获取标签名"><a href="#获取标签名" class="headerlink" title="获取标签名"></a>获取标签名</h1><ul>
+<li>element.tagName<br>该属性返回该节点的标签名。对于元素节点来说该属性和nodeName属性是相同的。</li>
+</ul>
+<h1 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h1><ul>
+<li>element.getAttribute(String)<br>该方法返回指定属性的值，如果指定属性不存在则按标准来说返回null,有些返回””.</li>
+<li>element.hasAttribute(String)<br>该方法放回一个布尔值，指示是否有该属性。</li>
+<li>element.removeAttribute(String)<br>删除指定属性。</li>
+<li>element.setAttribute(String,String)<br>添加一个新的属性。或改变已有属性的值。</li>
+</ul>
+<h1 id="后代操作"><a href="#后代操作" class="headerlink" title="后代操作"></a>后代操作</h1><ul>
+<li>element.children<br>该只读属性返回一个当前元素的子元素HTTPCollection</li>
+<li>element.children.length<br>返回有多少个后代元素。</li>
+<li>element.firstElementChild<br>获取第一个子元素</li>
+<li>element.lastElementChild<br>获取最后一个子元素</li>
+</ul>
+<h1 id="操作节点内容"><a href="#操作节点内容" class="headerlink" title="操作节点内容"></a>操作节点内容</h1><ul>
+<li>element.innerHTML<br>该属性返回该节点内部（不包括自身)的所有内容以HTML代码形式表现出来，也就是包括HTML标签。</li>
+<li>element.outerHTML<br>该属性返回该节点（包括自身)的所有内容以HTML代码形式表现出来，也就是包括HTML标签。</li>
+</ul>
+<h1 id="样式编辑"><a href="#样式编辑" class="headerlink" title="样式编辑"></a>样式编辑</h1><ul>
+<li>element.style<br>使用该属性获取或设置css样式都是内嵌样式，也就是在HTML标签中的style属性中设置。</li>
+<li><p>window.getComputedStyle(element,[pseudoElt])<br>element 指定的元素<br>pseudoElt 指定一个伪元素进行匹配。对于常规的元素来说可省略。<br>该方法返回当前元素所有最终使用的CSS属性值。返回的是一个CSS样式声明对象([object CSSStyleDeclaration])。READ ONLY。<br>使用CSSStyleDeclaration的getPropertyValue（String）方法返回指定的CSS属性的值，参数传入字符串形式的CSS属性名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.getComputedStyle(element, null).getPropertyValue(&quot;float&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>element.currentStyle<br>改属性是IE特有的一个属性，用来返回该对象的CSS样式声明对象。<br>对于IE6~8需要使用getAttribute方法访问CSS样式对象中的属性。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML/" rel="tag">#HTML</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/22/CSS动画/" rel="next" title="CSS动画">
+                <i class="fa fa-chevron-left"></i> CSS动画
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/22/JS-Event/" rel="prev" title="JS中的事件">
+                JS中的事件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Hyuni" />
+          <p class="site-author-name" itemprop="name">Hyuni</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NodeList-amp-HTMLCollection"><span class="nav-number">1.</span> <span class="nav-text">NodeList & HTMLCollection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-amp-Element"><span class="nav-number">2.</span> <span class="nav-text">Node & Element</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择DOM"><span class="nav-number">3.</span> <span class="nav-text">选择DOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建DOM"><span class="nav-number">4.</span> <span class="nav-text">创建DOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除DOM"><span class="nav-number">5.</span> <span class="nav-text">删除DOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加DOM"><span class="nav-number">6.</span> <span class="nav-text">添加DOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作Class"><span class="nav-number">7.</span> <span class="nav-text">操作Class</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作ID"><span class="nav-number">8.</span> <span class="nav-text">操作ID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取标签名"><span class="nav-number">9.</span> <span class="nav-text">获取标签名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性操作"><span class="nav-number">10.</span> <span class="nav-text">属性操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后代操作"><span class="nav-number">11.</span> <span class="nav-text">后代操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作节点内容"><span class="nav-number">12.</span> <span class="nav-text">操作节点内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#样式编辑"><span class="nav-number">13.</span> <span class="nav-text">样式编辑</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hyuni</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

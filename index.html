@@ -249,6 +249,344 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/26/设计模式-单例模式/" itemprop="url">
+                  设计模式-单例模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-26T12:27:00+08:00" content="2016-08-26">
+              2016-08-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>保证一个类有且仅有一个实例，并提供一个访问他的全局访问点。</p>
+<h2 id="惰性单例"><a href="#惰性单例" class="headerlink" title="惰性单例"></a>惰性单例</h2><p>指在需要的时候才创建对象的实例。</p>
+<h2 id="普通的单例模式"><a href="#普通的单例模式" class="headerlink" title="普通的单例模式"></a>普通的单例模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var Singleton = function(name)&#123;</span><br><span class="line">	this.name = name;</span><br><span class="line">   this.instance = null;</span><br><span class="line">&#125;</span><br><span class="line">Singleton.prototype.getName = function()&#123;</span><br><span class="line">	if(!this.instance)&#123;</span><br><span class="line">       this.instance = new Singleton(name);</span><br><span class="line">   &#125;</span><br><span class="line">   return this.instance;</span><br><span class="line">&#125;</span><br><span class="line">var a = Singleton.getInstance(&apos;a&apos;);</span><br><span class="line">var b = Singleton.getInstance(&apos;b&apos;);</span><br><span class="line">// a === b (true)</span><br></pre></td></tr></table></figure>
+<h2 id="通用的惰性单例"><a href="#通用的惰性单例" class="headerlink" title="通用的惰性单例"></a>通用的惰性单例</h2><p>根据单一职责原则，应该把构造函数和管理单例的逻辑分开。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var getSingle = function(fn)&#123;</span><br><span class="line">	var result;</span><br><span class="line">    return function()&#123;</span><br><span class="line">    	return result || (result = fn.apply(this,arguments));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>上述代码传入一个构造函数，返回一个新函数，新函数的功能为，调用时判断是否已经创建了实例，如果没有则把传入的参数传给对应的构造函数然后创建实例并返回，并且保存给result。下次再调用getSingle返回的方法时，可以直接返回result实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var createLogin = function()&#123;</span><br><span class="line">	var div = document.createElement(&apos;div&apos;);</span><br><span class="line">   document.body.appendChild(div);</span><br><span class="line">   return div;</span><br><span class="line">&#125;</span><br><span class="line">var createSingleLogin = getSingle(createLogin);</span><br><span class="line"></span><br><span class="line">document.getElementById(&apos;loginBtn&apos;).onclick = function()&#123;</span><br><span class="line">	var loginLayer = createSingleLogin();</span><br><span class="line">    //loginLayer则为createLogin所创建的实例</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/23/块格式化上下文/" itemprop="url">
+                  块格式化上下文
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T15:31:17+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>在MDN中是这样解释的：<br>块格式化上下文（block formatting context） 是页面 CSS 视觉渲染的一部分。它是用于决定块盒子的布局及浮动相互影响的一个区域。</p>
+<p>下列情况将创建一个块格式化上下文：</p>
+<ul>
+<li>根元素或其它包含它的元素</li>
+<li>浮动 (元素的 float 不为 none)  </li>
+<li>绝对定位元素 (元素的 position 为 absolute 或 fixed)  </li>
+<li>行内块 inline-blocks (元素的 display: inline-block)  </li>
+<li>表格单元格 (元素的 display: table-cell，HTML表格单元格默认属性)  </li>
+<li>表格标题 (元素的 display: table-caption, HTML表格标题默认属性)  </li>
+<li>overflow 的值不为 visible的元素  </li>
+<li>弹性盒子 flex boxes (元素的 display: flex 或 inline-flex)<br>块格式化上下文包括了创建该上下文的元素的所有子元素，但不包括创建了新的块格式化上下文的子元素。</li>
+</ul>
+<h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>就相当于隔离出来一个单独的块，这个单独的块里面的布局不会影响到外面的布局。就像JS使用IIFE来创建一个链式的作用域一样。</p>
+<h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><ul>
+<li>内部的Box会在垂直方向，从顶部开始一个接一个地放置。</li>
+<li>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生叠加</li>
+<li>每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存-在浮动也是如此。</li>
+<li>BFC的区域不会与float box叠加。</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然。</li>
+<li>计算BFC的高度时，浮动元素也参与计算。</li>
+</ul>
+<p><a href="http://www.html-js.com/article/1866" target="_blank" rel="external">参考文章</a></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/23/清除浮动的三种常用方法/" itemprop="url">
+                  清除浮动的三种常用方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T14:11:00+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h1><p>当一个元素浮动的时候，该元素在原来的正常文档流中的位置将清除，占位将向左或者向右平移。如果一个父类容器中。只有浮动元素的话，那么由于浮动元素原来在父元素中所占的位置被清除，而导致父元素的高度为默认，也就是0.使父元素的高度出现‘坍塌’现象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;float&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;./a.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/clearFloat.png" alt="清除浮动实例">如图，蓝色的线表示父元素的高度已经变成0.</p>
+<h1 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h1><h2 id="添加空标签"><a href="#添加空标签" class="headerlink" title="添加空标签"></a>添加空标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;float&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;./a.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>在CSS中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.clear&#123;</span><br><span class="line">	clear:both;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="给父元素添加overflow"><a href="#给父元素添加overflow" class="headerlink" title="给父元素添加overflow"></a>给父元素添加overflow</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;float&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;./a.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>在CSS中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.float&#123;</span><br><span class="line">	 overflow:auto;</span><br><span class="line">    zoom:1;//处理浏览器兼容性</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用CSS伪元素"><a href="#使用CSS伪元素" class="headerlink" title="使用CSS伪元素"></a>使用CSS伪元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;clear&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;./a.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>在CSS中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.clear&#123;</span><br><span class="line">	zoom:1;</span><br><span class="line"> &#125;</span><br><span class="line">.clear:after&#123;</span><br><span class="line">	 clear:both;</span><br><span class="line">     content:&apos;&apos;;</span><br><span class="line">     display:block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>PS:   </p>
+<ul>
+<li><strong>display:block;对于FF/chrome/opera/IE8不能缺少，其中content（）可以取值也可以为空。visibility:hidden;的作用是允许浏览器渲染它，但是不显示出来，这样才能实现清楚浮动。</strong></li>
+<li>zoom:1 用来触发IE系列的hasLayout</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/22/JS-Event/" itemprop="url">
                   JS中的事件
                 </a>
@@ -1180,392 +1518,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/04/extend/" itemprop="url">
-                  JS中的继承
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-04T11:00:00+08:00" content="2016-05-04">
-              2016-05-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JS中的继承"><a href="#JS中的继承" class="headerlink" title="JS中的继承"></a>JS中的继承</h1><h2 id="通过原型链继承"><a href="#通过原型链继承" class="headerlink" title="通过原型链继承"></a>通过原型链继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function SuperType()&#123;</span><br><span class="line">    this.property = true;</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.getSuperValue = function()&#123;</span><br><span class="line">    return this.property;</span><br><span class="line">&#125;;</span><br><span class="line">function SubType()&#123;</span><br><span class="line">    this.property = false;</span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype = new SuperType(); //继承</span><br><span class="line"></span><br><span class="line">SubType.prototype.getSubValue = function()&#123;</span><br><span class="line">    return this.subproperty;</span><br><span class="line">&#125;;</span><br><span class="line">var instance = new SubType();</span><br><span class="line">alert(instance.getSuperValue()); //true</span><br></pre></td></tr></table></figure>
-<p>这种继承方法就是直接赋父类的原型给子类。</p>
-<h2 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function SuperType()&#123;</span><br><span class="line">    this.property = true;</span><br><span class="line">&#125;</span><br><span class="line">function SubType()&#123;</span><br><span class="line">    SuperType.call(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在子类中调用父类的构造函数。</p>
-<h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><p>结合原型链继承和借用构造函数继承同时使用。</p>
-<h2 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function object(o)&#123;</span><br><span class="line">    function F()&#123;&#125;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    return new F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function createAnother(original)&#123;</span><br><span class="line">    var clone = object(original);</span><br><span class="line">    clone.sayHi=function()&#123;</span><br><span class="line">        alert(&quot;hi&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return clone;</span><br><span class="line">&#125;</span><br><span class="line">var person = &#123;</span><br><span class="line">    name: &quot;hyuni&quot;</span><br><span class="line">&#125;;</span><br><span class="line">var anotherPerson = createAnother(person);</span><br><span class="line">anotherPerson.sayHi(); //hi；4</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/04/Inline&Block/" itemprop="url">
-                  行内元素,块级元素,空元素汇总
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-04T11:00:00+08:00" content="2016-05-04">
-              2016-05-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="行内元素与块级元素"><a href="#行内元素与块级元素" class="headerlink" title="行内元素与块级元素"></a>行内元素与块级元素</h1><h2 id="Block-Element-块级元素"><a href="#Block-Element-块级元素" class="headerlink" title="Block Element 块级元素"></a>Block Element 块级元素</h2><p>height,width可以设置。每个块级元素默认占据一整行。也就是默认宽是容器的100%。</p>
-<h2 id="Inline-Element-内联元素"><a href="#Inline-Element-内联元素" class="headerlink" title="Inline Element 内联元素"></a>Inline Element 内联元素</h2><p>height,width不可设置。宽度随自身内容的宽度变化。默认不占据一整行。</p>
-<h2 id="Display-Inline-Block"><a href="#Display-Inline-Block" class="headerlink" title="Display:Inline-Block"></a>Display:Inline-Block</h2><p>CSS中将元素设置为Display:inline-block,可以使行内元素具有一些块级元素的特点。也就是内部表现类似Block，外部表现类似Inline。</p>
-<ul>
-<li>可以设置宽高</li>
-<li>默认占一行。</li>
-<li>IE6/7不支持Inline-Block.需要有*zoom:1来触发元素hasLayout才会表现出来。</li>
-</ul>
-<h2 id="常用元素"><a href="#常用元素" class="headerlink" title="常用元素"></a>常用元素</h2><h3 id="Block-element"><a href="#Block-element" class="headerlink" title="Block element"></a>Block element</h3><ul>
-<li>address - 地址</li>
-<li>blockquote - 块引用</li>
-<li>center - 举中对齐块</li>
-<li>dir - 目录列表</li>
-<li>div - 常用块级容易，也是css layout的主要标签</li>
-<li>dl - 定义列表</li>
-<li>form - 交互表单</li>
-<li>h1 - 大标题</li>
-<li>h2 - 副标题</li>
-<li>h3 - 3级标题</li>
-<li>h4 - 4级标题</li>
-<li>h5 - 5级标题</li>
-<li>h6 - 6级标题</li>
-<li>hr - 水平分隔线</li>
-<li>menu - 菜单列表</li>
-<li>noframes - frames可选内容，对于不支持frame的浏览器显示此区块内容</li>
-<li>noscript - 可选脚本内容,对于不支持script的浏览器显示此内容</li>
-<li>ol - 排序表单</li>
-<li>p - 段落</li>
-<li>pre - 格式化文本</li>
-<li>table - 表格</li>
-<li>ul - 非排序列表</li>
-</ul>
-<h3 id="Inline-element"><a href="#Inline-element" class="headerlink" title="Inline element"></a>Inline element</h3><ul>
-<li>a - 锚点</li>
-<li>abbr - 缩写</li>
-<li>acronym - 首字</li>
-<li>b - 粗体(不推荐)</li>
-<li>big - 大字体</li>
-<li>br - 换行</li>
-<li>dfn - 定义字段</li>
-<li>em - 强调</li>
-<li>font - 字体设定(不推荐)</li>
-<li>i - 斜体</li>
-<li>img - 图片</li>
-<li>input - 输入框</li>
-<li>label - 表格标签</li>
-<li>q - 短引用</li>
-<li>s - 中划线(不推荐)</li>
-<li>samp - 定义范例计算机代码</li>
-<li>select - 项目选择</li>
-<li>small - 小字体文本</li>
-<li>span - 常用内联容器，定义文本内区块</li>
-<li>strike - 中划线</li>
-<li>strong - 粗体强调</li>
-<li>sub - 下标</li>
-<li>sup - 上标</li>
-<li>textarea - 多行文本输入框</li>
-<li>u - 下划线</li>
-</ul>
-<h1 id="空元素"><a href="#空元素" class="headerlink" title="空元素"></a>空元素</h1><p>在HTML中，没有内容的元素被称为空元素。<br>在开始标签中添加斜杠，比如 <br>，是关闭空元素的正确方法。</p>
-<ul>
-<li>br - 换行</li>
-<li>hr - 水平线</li>
-<li>input - 表单输入</li>
-<li>img - 图片</li>
-<li>link - 定义文档与外部资源的关系</li>
-<li>meta - 元素可提供有关页面的元信息，比如针对搜索引擎和更新频度的描述和关键词。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/04/Object/" itemprop="url">
-                  JS中的对象
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-04T09:00:00+08:00" content="2016-05-04">
-              2016-05-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JS中的对象"><a href="#JS中的对象" class="headerlink" title="JS中的对象"></a>JS中的对象</h1><h2 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h2><p>在JS中有两种属性类型：数据属性，访问器属性。</p>
-<h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><p>Configurable：能否通过delete删除属性。默认为true.<br>Enumerable：能否通过for-in循环返回属性。默认为true.<br>Writable：能否修改属性的值。默认为True.<br>Value：包含这个属性的数据值。读取和写入属性的时候都是从这个属性来。默认为undefined.  </p>
-<h3 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h3><p>Configurable：能否通过delete删除属性。默认为true.<br>Enumerable：能否通过for-in循环返回属性。默认为true.<br>get:在读属性时调用的函数。默认为undefined.<br>set:在写属性时调用的函数。默认为undefined.<br>其中get和set不是必须的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">数据属性，访问器属性的特性使用Object.defineProperty(&quot;object&quot;,&quot;property&quot;,&quot;value&quot;)方法修改。value的默认值为false。property和value可以合并为一个对象使用Object.defineProperies方法。</span><br><span class="line">var book = &#123;&#125;;</span><br><span class="line">Object.defineProperies(book,&#123;</span><br><span class="line">    year:&#123;</span><br><span class="line">        value:2016</span><br><span class="line">    &#125;,</span><br><span class="line">    edition:&#123;</span><br><span class="line">        value:1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>使用Object.getOwnPropertyDescriptor(“object”,”property”)方法取得属性的描述。<br>返回一个对象包含属性中的对象。</p>
-<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function createPerson(name,age)&#123;</span><br><span class="line">    var person = new Object();</span><br><span class="line">    person.name=name;</span><br><span class="line">    person.age=age;</span><br><span class="line">    person.sayHi = function()&#123;</span><br><span class="line">        alert(this.name + &quot;say Hi &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return person;</span><br><span class="line">&#125;</span><br><span class="line">var person = createPerson(&quot;hyuni&quot;,21);</span><br></pre></td></tr></table></figure>
-<h3 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Peroson(name,age)&#123;</span><br><span class="line">    this.name=name;</span><br><span class="line">    this.age=age;</span><br><span class="line">    this.sayHi = function()&#123;</span><br><span class="line">        alert(this.name + &quot;say Hi &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person(&quot;hyuni&quot;,22);</span><br></pre></td></tr></table></figure>
-<p>特征：没有显示创建Object,直接赋值给this,没有return.<br>内部步骤<br>1.创建一个新对象<br>2.将构造函数的作用域赋给一个新对象。this指向新对象<br>3.执行构造函数<br>4.返回新对象   </p>
-<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;</span><br><span class="line">Person.prototype.name = &quot;hyuni&quot;;</span><br><span class="line">Person.prototype.age = 22;</span><br><span class="line">Person.prototype.sayHi = function()&#123;</span><br><span class="line">    alert(this.name + “say hi&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果不是向prototype中添加方法而是指定一个prototype为一个对象，那么他的constructor属性不再指向原来的constructor需要手动重新指定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Peroson()&#123;&#125;</span><br><span class="line">Person.protytype = &#123;</span><br><span class="line">    constructor : Person,</span><br><span class="line">    name : &quot;hyuni&quot;,</span><br><span class="line">    age : 22，</span><br><span class="line">    sayHi : function()&#123;</span><br><span class="line">        alert (this.name + &quot;say hi&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="混合模式"><a href="#混合模式" class="headerlink" title="混合模式"></a>混合模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">    this.name=name;</span><br><span class="line">    this.age=age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    constructor : Person,</span><br><span class="line">    sayHi : function()&#123;</span><br><span class="line">        alert(this.name + &quot;say Hi &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种方式使得每个对象既有自己的属性又可以共享公共方法达到节约内存的目的。</p>
-<h3 id="稳妥构造函数模式"><a href="#稳妥构造函数模式" class="headerlink" title="稳妥构造函数模式"></a>稳妥构造函数模式</h3><p>稳妥对象指的是没有公共属性，不引用this的对象。适合在安全环境中使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">    var object = new Object();</span><br><span class="line">    object.sayhi = function()&#123;</span><br><span class="line">        alert(name + &quot;say hi&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>除了sayhi之外没有别的方法访问name的值。</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1611,7 +1563,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1619,7 +1571,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
